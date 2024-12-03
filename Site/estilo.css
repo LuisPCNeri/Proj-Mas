@@ -174,3 +174,11 @@ img {
   align-items: center; /* Centraliza os itens verticalmente */
   flex-wrap: wrap; /* Permite que os elementos quebrem linha se necessário */
 } 
+
+#map { height: 50vh;
+  z-index: 1;
+}
+
+#maptext{
+  font-weight: 800;padding-left: 10vw; padding-top: 20vh;
+}
