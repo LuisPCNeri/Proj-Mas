@@ -18,7 +18,7 @@ function check_info($con){
     }else{
         session_start();
         $_SESSION["user"] = $email;
-        header('Location: website-casadocao.html');
+        header('Location: ../website-casadocao.html');
     }
 }
 

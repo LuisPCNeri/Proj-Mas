@@ -45,7 +45,7 @@
             <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
           </li>
           <li class="nav-item" id="nav-login">
-              <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+              <a class="nav-link" href="login e registo/log_in.html">Entrar</a> 
           </li>
         </ul>
       </div>
@@ -200,14 +200,17 @@
   </svg>
   <img id="logoua" src="recursos/Universidade-de-Aveiro.png">
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="Scripts/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function (){
-  $.ajax({
-    url: 'login e registo/main.php',
-    success: function (data){
-      var user = data;
-      if(data != ""){
-        document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
+      $.ajax({
+        url: 'login e registo/main.php',
+        success: function (data){
+          var user = data;
+          if(data != ""){
+            document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
       }
     }
   });
