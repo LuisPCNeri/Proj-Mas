@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa do Cão</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- Navbar com o retângulo e a curva -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-lg">
+      <a class="navbar-brand" href="#" id="texto-icone">Vetria</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse rounded-5" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Serviços
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="container pt-5">
+                  <div class="row">
+                      <div class="col-2"></div>
+                      <div class="col-3"><a href="/servicos/osmeusanimais.html"><img src="imagemcao1menu.png" alt="Os meus Animais"></a></div>
+                      <div class="col-3"><a href="/servicos/marcar-consulta.html"><img src="agendar-menu.jpg" alt="Agendar Consulta"></a></div>
+                      <div class="col-3"><a href="/servicos/dogwalking.html"><img src="dogwalking-menu.jpg" alt="Dog-walking"></a></div>
+                      <div class="col-1"></div>
+                  </div>
+                </div>
+            </ul>
+        </li>
+          <li class="nav-item" id="nav-marketplace">
+              <a class="nav-link" href="Marketplace/marketplace.html">Marketplace</a>
+            </li>
+          <li class="nav-item" id="nav-contact">
+            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Contactos" aria-controls="offcanvasDark">Contactos</a>
+          </li>
+          <li class="nav-item" id="nav-about">
+            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
+          </li>
+          <li class="nav-item" id="nav-login">
+              <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Curva SVG -->
+    <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7">
+      <defs>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="8" stdDeviation="4" flood-color="rgba(0, 0, 0, 0.2)" />
+        </filter>
+      </defs>
+      <path fill="#bb9469" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z" style="filter: url(#shadow);"></path>
+    </svg>  
+  </nav>
+<!-- Menu lateral -->
+  <div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Contactos" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Contactos</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p><i class="fa fa-regular fa-phone"></i>  Telefone: 234 348 051</p>
+      <p><i class="fa fa-exclamation-triangle"></i>  Urgências (24hr)</p>
+      <p><i class="fa fa-regular fa-phone"></i>  Telemóvel: 969 939 939</p>
+      <p> </p>
+      <p><i class="fa fa-envelope"></i> Email: </p>
+      <p>vetria.aveiro@gmail.com</p>
+    </div>
+  </div>
+  <div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Sobre" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Vetria</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Projeto realizado por:</p>
+      <p>125091: Bernardo Miguel dos Santos </p>
+      <p>125264: Luís Correia </p>
+      <p>124754: Mª Inês Gonçalves </p>
+      <p>125696: Rodrigo Machado Pereira </p>
+      <p>UA- deti</p>
+    </div>
+  </div>
+<!-- Carrosel-->
+<div id="carouselExampleFade" class="carousel slide carousel-fade">
+    <div class="carousel-inner">
+        <div class="carousel-item" style="background: center center; height: 700px; background-size: cover;">
+          <video class="video-fluid" autoplay loop muted>
+            <source src="recursos/caes_brincar.mp4" type="video/mp4">
+        </video>
+        </div>
+        <div class="carousel-item active">
+        <video class="video-fluid" autoplay loop muted>
+            <source src="recursos/videocaoflores.mp4" type="video/mp4">
+        </video>
+        </div>
+        <div class="carousel-item">
+            <video class="video-fluid" autoplay loop muted>
+                <source src="recursos/dogwalking.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    <svg class="bottom-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7" style="position: absolute; bottom: -2px; left: 0; width: 100%; z-index: 1;">
+        <path fill="#bb9469" d="M0 37.5c8.1-4.6 15.1-7.9 20.3-10.1 10.3-4.4 18.5-6.8 28.2-9.7 5-1.5 11.3-3.3 19.8-5.3C74.4 11 85 8.6 99.1 7.1c11.2-1.2 19.7-1.3 24.7-1.3 13.8-.1 24.5.8 29.5 1.3 10.6 1.1 18.6 2.5 21.6 3.1 5.3 1 5.9 1.3 23.3 5.3 10.1 2.3 15.2 3.5 19.8 4.4 6.2 1.2 10.8 2 19.8 3.5 6.1 1 13.1 2.2 22.5 3.5 8.1 1.2 14.4 1.9 16.7 2.2 6 .7 15 1.8 26 2.6 10 .8 16.9 1.3 26 1.3 17.2 0 30.6-1.9 35.7-2.6 10.3-1.6 17.4-3.4 31.3-7 14.4-3.7 15.1-4.5 32.6-9.2 11-3 19.2-5.2 30.4-7.5 7.5-1.5 16.6-3.4 28.6-4.8 16.4-2 29.2-2 39.5-1.9 13.7.1 24.2 1 34.3 1.8 11 .9 19.2 1.8 26.4 2.6 8 .9 21.6 2.6 38.8 5.3 18.4 2.9 31.8 5.5 46.2 8.4 14.8 2.9 33.6 6.8 55.5 11.9v47.7H0V37.5z"></path>
+    </svg>
+</div>
+<!--Parte cuidar cao-->
+<div class="container-fluid divcuidar">
+    <div class="row">
+        <div class="col-6">
+          <img src="recursos/cuidarcao.jpg" alt="Imagem_ia">
+        </div>
+        <div class="col-6 d-flex flex-column justify-content-center align-items-center text-center">
+          <h1>Cuide do seu Animal</h1>
+          <p>Verifique o estado de saúde do seu animal, veja as vacinas tomadas e e saiba mais sobre o seu animal.</p>
+          <a href="servicos/osmeusanimais.html" class="btn btn-light rounded-5"><i class=" fa fa-solid fa-paw" style="font-size:large;"></i>  Saber Mais</a>
+        </div>
+    </div> 
+</div>
+<!--Parte esteja connosco com cards-->
+<div class="container-fluid-lg" style="background-color: beige;">
+    <div class="row" id="funcionalidades">
+      <h1 style="text-align: center; font-size:20px; padding-top: 50px;"><i class=" fa fa-solid fa-paw" style="font-size: x-large;"></i>  Esteja Connosco</h1>
+      <p id="estejaconnosco">Faça um acompanhamento personalizado médico, 
+        agende consultas sem inconvenientes, mantenha o seu animal em bom estado físico, realize serviços como dog-walking 
+        ou compre os nossos produtos online.</p>
+    </div>
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-4 py-3">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Registo Animal</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-secondary rounded-5">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 py-3">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Monitorização do estado físico</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-secondary rounded-5">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 py-3">
+          <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Dog-walking</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-secondary rounded-5">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div> 
+</div>
+<div class="row pb-5" style="background-color: beige;">
+  <div class="col-md-1"></div>
+  <div class="col-md-6" style="padding-left: 100px;"><h2>Encontre-nos!</h2></div>
+  <div class="col-md-3">
+    <iframe width="400" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=-8.662963807582857%2C40.63158680486605%2C-8.656767904758455%2C40.634114924693606&amp;layer=mapnik&amp;marker=40.63285291226819%2C-8.659527897834778"
+    style="border: 1px solid black"></iframe>
+  </div>
+</div>
+<div class="row" style="background-image:url('recursos/acessórios.jpg'); height: 300px; background-repeat: no-repeat; background-size: cover; background-position: center; align-items: center; text-align: center;">
+  <div>
+    <h1 style="font-size: 25px; color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);">
+      Conheça o nosso marketplace
+    </h1>
+    <a class="btn btn-secondary rounded-5" href="Marketplace/marketplace.html" style="margin-top: 10px;"><i class=" fa fa-solid fa-paw" style="font-size:large;"></i> Saiba Mais</a>
+  </div>
+</div>
+<!--footer-->
+<div class="container-fluid" style="background-color:#bb9469; position: relative; padding: 0;">
+  <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7" style="width: 100%; height: auto;">
+    <path fill="beige" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z"></path>
+  </svg>
+  <img id="logoua" src="recursos/Universidade-de-Aveiro.png">
+</div>
+<script>
+    $(document).ready(function (){
+  $.ajax({
+    url: 'login e registo/main.php',
+    success: function (data){
+      var user = data;
+      if(data != ""){
+        document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
+      }
+    }
+  });
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Script para encolher a navbar ao dar scroll
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 70) {
+      navbar.classList.add('navbar-shrink');
+    } else {
+      navbar.classList.remove('navbar-shrink');
+    }
+  });
+
+  // Script para adicionar a classe fixed-top quando a página rolar
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 0) {
+      navbar.classList.add('fixed-top');
+    } else {
+      navbar.classList.remove('fixed-top');
+    }
+  });
+</script>
+</body>
+</html>

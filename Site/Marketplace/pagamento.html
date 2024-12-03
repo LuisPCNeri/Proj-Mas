@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <title>Vetria</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+    <link rel="stylesheet" href="../estilo.css">
+    <link rel="stylesheet" href="pagamento.css">
+    <style>
+        body{
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar com o retângulo e a curva -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="../website-casadocao.html" id="texto-icone">Vetria</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse rounded-5" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Serviços
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="container pt-5">
+                  <div class="row">
+                      <div class="col-2"></div>
+                      <div class="col-3"><a href="/servicos/osmeusanimais.html"><img src="../imagemcao1menu.webp" alt="Os meus Animais"></a></div>
+                      <div class="col-3"><a href="#"><img src="../agendar-menu.jpg" alt="Agendar Consulta"></a></div>
+                      <div class="col-3"><a href="#"><img src="../dogwalking-menu.jpg" alt="Dog-walking"></a></div>
+                      <div class="col-1"></div>
+                  </div>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+        </li>
+          <li class="nav-item" id="nav-marketplace">
+              <a class="nav-link" href="Marketplace/marketplace.html">Marketplace</a>
+            </li>
+          <li class="nav-item" id="nav-contact">
+            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Contactos" aria-controls="offcanvasDark">Contactos</a>
+          </li>
+          <li class="nav-item" id="nav-about">
+            <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
+          </li>
+          <li class="nav-item" id="nav-login">
+              <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Curva SVG -->
+    <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7">
+      <defs>
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+          <feDropShadow dx="0" dy="8" stdDeviation="4" flood-color="rgba(0, 0, 0, 0.2)" />
+        </filter>
+      </defs>
+      <path fill="#bb9469" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z" style="filter: url(#shadow);"></path>
+    </svg>  
+  </nav>
+  <!-- Menu lateral -->
+    <div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Contactos" aria-labelledby="offcanvasDarkLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkLabel">Contactos</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p><i class="fa fa-regular fa-phone"></i>  Telefone: 234 348 051</p>
+        <p><i class="fa fa-exclamation-triangle"></i>  Urgências (24hr)</p>
+        <p><i class="fa fa-regular fa-phone"></i>  Telemóvel: 969 939 939</p>
+        <p> </p>
+        <p><i class="fa fa-envelope"></i> Email: </p>
+        <p>vetria.aveiro@gmail.com</p>
+      </div>
+    </div>
+    <div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Sobre" aria-labelledby="offcanvasDarkLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkLabel">Vetria</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <p>Projeto realizado por:</p>
+        <p>125091: Bernardo Miguel dos Santos </p>
+        <p>125264: Luís Correia </p>
+        <p>124754: Mª Inês Gonçalves </p>
+        <p>125696: Rodrigo Machado Pereira </p>
+        <p>UA- deti</p>
+      </div>
+    </div>
+    <div class="container pt-5">
+        <h2 class="mb-2 mt-3">Pagamento</h2>
+        <div class="mt-4 mb-4 border-top">
+            <div class="container bg-light mt-4 border rounded" style="padding:20px">
+                <form>
+                    <div class="row">
+                        <h3 class="mt-4">Shipping address</h3>
+                        <div class="col-12 col-sm-6">
+                            <label for="mor"> Address</label>
+                            <input type="text" id="mor" name="morada">
+                        </div>
+                        <div class="col-12 col-sm-2">
+                            <label for="dist">District</label>
+                            <input type="text" id="dist" name="distrito">
+                        </div>
+                        <div class="col-12 col-sm-2">
+                            <label for="cid"> City</label>
+                            <input type="text" id="cid" name="cidade">
+                        </div>
+                        <div class="col-12 col-sm-2">
+                            <label for="cod"> Zip code</label>
+                            <input type="text" id="cod" name="código postal">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6" style="padding-right: 100px;">
+                            <h3>Invoice data</h3>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="fname"> First Name</label>
+                                    <input type="text" id="fname" name="firstname">
+                                </div>
+                                <div class="col-6">
+                                    <label for="fname"> Surname</label>
+                                    <input type="text" id="sname" name="surname">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label>
+                                    <input type="checkbox" checked="checked" name="sameadr"> Shipping address is the same of the card
+                                </label>
+                            </div>
+                            <div class="col-12">
+                                <label for="adr"> Address</label>
+                                <input type="text" id="adr" name="address">
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="dist">District</label>
+                                    <input type="text" id="dist" name="distrito">
+                                </div>
+                                <div class="col-6">
+                                    <label for="cid"> City</label>
+                                    <input type="text" id="cid" name="cidade">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="cod"> Zip code</label>
+                                    <input type="text" id="cod" name="código postal">
+                                </div>
+                                <div class="col-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="tlm"> Phone Number</label>
+                                    <input type="text" id="tlm" name="telemovel">
+                                </div>
+                                <div class="col-6"></div>
+                            </div>
+                            <div class="col-12">
+                                <label for="email">Email</label>
+                                <input type="text" id="email" name="email">
+                            </div>
+                            <div class="col-12">
+                                <label for="coment">More Info</label>
+                                <input type="text" id="coment" name="comment" style="height: 150px;">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6">
+                            <h3>Payment</h3>
+                            <label for="fname">Select Payment Method</label>
+                            <div class="row" style="margin-bottom: 20px;">
+                                <div class="col-3">
+                                    <label>
+                                        <input type="radio" name="test" value="small" checked>
+                                        <img src="../recursos/marketplace/mastercard-logo.png" alt="Option 1">
+                                    </label>
+                                </div>
+                                <div class="col-3">
+                                    <label>
+                                        <input type="radio" name="test" value="small" checked>
+                                        <img src="../recursos/marketplace/logo-visa.svg" alt="Option 1">
+                                    </label>
+                                </div>
+                                <div class="col-3">
+                                    <label>
+                                        <input type="radio" name="test" value="small" checked>
+                                        <img src="../recursos/marketplace/mb-way-logo.webp" alt="Option 1">
+                                    </label>
+                                </div>
+                                <div class="col-3">
+                                    <label>
+                                        <input type="radio" name="test" value="small" checked>
+                                        <img src="../recursos/marketplace/paypal-logo.webp" alt="Option 1">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-8">
+                                    <label for="cname">Card Name</label>
+                                    <input type="text" id="cname" name="cardname">
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <label for="ccnum">Card Number</label>
+                                    <input type="text" id="ccnum" name="cardnumber">
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="exp">Expire date</label>
+                                            <input type="text" id="exp" name="exp">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="cvv">CVV</label>
+                                            <input type="text" id="cvv" name="cvv">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4"></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="container">
+                                    <h4>
+                                        Cart
+                                        <span class="price" style="color:black">
+                                            <i class="fa fa-shopping-cart"></i>
+                                            <b>0</b>
+                                        </span>
+                                    </h4>
+                                    <p>Product 1 <span class="price">0.00€</span></p>
+                                    <p>Product 2 <span class="price">0.00€</span></p>
+                                    <p>Product 3 <span class="price">0.00€</span></p>
+                                    <p>Product 4 <span class="price">0.00€</span></p>
+                                    <hr>
+                                    <p>Total <span class="form-control" id="total" title="Preço total da compra">0.00</span></p>
+                                </div>
+                            </div>
+                            <a href="marketplace.html" class="btn btn-primary col-12">Finish</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid" style="background-color:#bb9469; padding:0px;">
+        <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7" style="width: 100%; height: 90px;">
+            <path fill="white" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z"></path>
+        </svg>
+        <img src="../../recursos/Universidade-de-Aveiro.png" style="height:60px;float: right;">
+    </footer>
+    <script>
+            $(document).ready(function (){
+        $.ajax({
+            url: 'login e registo/main.php',
+            success: function (data){
+            var user = data;
+            if(data != ""){
+                document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
+            }
+            }
+        });
+        });
+    </script>
+    <script src="marketplace.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+</body>
+</html>
