@@ -85,6 +85,13 @@
     });
   }
 
+  function handle_click_add(obj){
+    return () => {
+      window.postMessage(obj.innerHTML, '*');
+      console.log(obj.innerHTML);
+    };
+  }
+
   function days_in_month(month, year){
     return new Date(year, month + 1, 0).getDate();
   }
@@ -107,9 +114,10 @@
         
         cell.appendChild(cell_text);
         cell_text.innerHTML = String(date);
+        cell_text.addEventListener('click', handle_click_add(cell_text));
 
         if(date === today.getDate() && month === today.getMonth() && year === today.getFullYear()){
-          cell_text.classList.add('cell-text')
+          cell_text.classList.add('cell-text');
           cell_text.classList.add('nav-link');
         }
         date++;
@@ -148,8 +156,11 @@
     document.getElementById('modal_body').innerHTML = 
       `Tem uma ${eventData[0]} às ${eventData[4]}`;
     $('#modal').modal('toggle');
+    window.postMessage(this.innerHTML, '*');
+    console.log(this.innerHTML);
     };
   }
+
 
   function do_events(events, month){
     days_arr = document.getElementsByClassName('cell');
@@ -167,7 +178,6 @@
   }
 
   function month_backward(){
-    console.log(month);
     month --;
     if(month < 0){
       month = 11;
