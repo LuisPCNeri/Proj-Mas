@@ -87,7 +87,8 @@
 
   function handle_click_add(obj){
     return () => {
-      window.postMessage(obj.innerHTML, '*');
+      info = [obj.innerHTML, month, year];
+      window.postMessage(info, '*');
       console.log(obj.innerHTML);
     };
   }
@@ -156,8 +157,9 @@
     document.getElementById('modal_body').innerHTML = 
       `Tem uma ${eventData[0]} às ${eventData[4]}`;
     $('#modal').modal('toggle');
-    window.postMessage(this.innerHTML, '*');
-    console.log(this.innerHTML);
+    info = [this.innerHTML, eventData[2], eventData[3]];
+    window.postMessage(infoL, '*');
+    console.log(info);
     };
   }
 
