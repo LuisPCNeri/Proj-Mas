@@ -158,7 +158,7 @@
       `Tem uma ${eventData[0]} às ${eventData[4]}`;
     $('#modal').modal('toggle');
     info = [this.innerHTML, eventData[2], eventData[3]];
-    window.postMessage(infoL, '*');
+    window.postMessage(info, '*');
     console.log(info);
     };
   }
