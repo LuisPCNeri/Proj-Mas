@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa do Cão</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../estilo.css">
+  <style>
+    .cell{
+      text-align: center;
+      vertical-align: middle;
+      width: 35px;
+      height: 60px;
+      padding: 0;
+    }
+    .cell-text{
+      background-color: rgba(187, 148, 105, 0.6);
+      text-align: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 50%;
+      line-height: 35px;
+      display: inline-block;
+    }
+    td{
+      padding:5px;
+      text-align: center;
+    }
+    table{
+      border-collapse: collapse ;
+    }
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+<!--Calendário-->
+<div class="container">
+  <h1 class="h1 text-center mb-3" id="month_h1"></h1>
+  <div class="row">
+    <div class="col-1" id="backward_btn"><i class='fa fa-backward' onclick="month_backward()"></i></div>
+    <table class="col-3" style="width: 800px; height: 300px; margin-left: auto; margin-right: auto;" id='calendar_container'></table>
+    <div class="col-1 id="forward_btn"><i class='fa fa-forward' onclick="month_forward()"></i></div>
+  </div>
+</div>
+
+<!--Modal que aparece quando se carrega num dia com evento-->
+<div class="modal" id="modal" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-title"></h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="close">
+          <span aria-hidden="true">&times;</span>
+      </div>
+      <div class="modal-body" id="modal_body"></div>
+      <button type="button" class="btn btn-primary" style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px;" onclick="desmarcar()" data-bs-dismiss="modal">Desmarcar</button>
+      <!--Botão desmarcar: Remove da BD o evento-->
+    </div>
+  </div>
+</div>
+<!--Botão para adicionar evento-->
+<!--Não deverá mostrar horas onde outros têm consultas-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="Scripts/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const month_names = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  var today = new Date();
+  month = today.getMonth();
+  year = today.getFullYear();
+
+  function handle_click_add(obj){
+    return () => {
+      info = [obj.innerHTML, month, year];
+      window.top.postMessage(info, '*');
+      console.log(info);
+    };
+  }
+
+  function days_in_month(month, year){
+    return new Date(year, month + 1, 0).getDate();
+  }
+
+  function make_calendar_days(month){
+    document.getElementById('month_h1').innerHTML = '<h1 class="h1 text-center" id="month_h1">' + month_names[month] + ' ' + year + '</h1>';
+    date = 1;
+
+    for(i=0; i < 7; i++){
+      row = document.createElement('tr');
+
+      for(k=0; k < 7; k++){
+        if(date > days_in_month(month, year)){break;}
+
+        cell = document.createElement('td');
+        cell.classList.add('justify-content-center')
+        row.appendChild(cell);
+        cell.classList.add('cell');
+        cell_text = document.createElement('a');
+        
+        cell.appendChild(cell_text);
+        cell_text.innerHTML = String(date);
+        cell_text.addEventListener('click', handle_click_add(cell_text));
+
+        if(date === today.getDate() && month === today.getMonth() && year === today.getFullYear()){
+          cell_text.classList.add('cell-text');
+          cell_text.classList.add('nav-link');
+        }
+        date++;
+      }
+      document.getElementById('calendar_container').appendChild(row);
+    }
+  }
+
+  function get_events(month){
+    $.ajax({
+      url: 'calendario.php',
+      success: (data) => {
+        ordered_data_array = [];
+        ordered_data = [];
+        data = data.split('"');
+        data.pop();
+        data.shift();
+        
+        for(k=0; k < data.length; k++){
+          if(data[k] != ',' && data[k] != ']['){ordered_data.push(data[k]);}
+          if(ordered_data.length === 5){
+            ordered_data_array.push(ordered_data);
+            ordered_data = [];
+          }
+        }
+         
+        do_events(ordered_data_array, month);
+      }
+    });
+  }
+
+  function handleDayClick(eventData) {
+  return function () {
+    document.getElementById('modal-title').innerHTML = 
+      `${eventData[1]}/${eventData[2]}/${eventData[3]}`;
+    document.getElementById('modal_body').innerHTML = 
+      `Tem uma ${eventData[0]} às ${eventData[4]}`;
+    $('#modal').modal('toggle');
+    info = [this.innerHTML, eventData[2], eventData[3]];
+    window.top.postMessage(info, '*');
+    console.log(info);
+    };
+  }
+
+
+  function do_events(events, month){
+    days_arr = document.getElementsByClassName('cell');
+    for(k=0; k < days_arr.length; k++){
+      for(i=0; i < events.length; i++){
+        if(events[i][1] === days_arr[k].firstChild.innerHTML && events[i][2] === String(month + 1) && events[i][3] === String(year)){
+          const eventData = events[i];
+          days_arr[k].firstChild.classList.add('cell-text', 'nav-link');
+
+          days_arr[k].firstChild.addEventListener('click', handleDayClick(eventData));
+          days_arr[k].firstChild._clickHandler = handleDayClick(eventData);
+        }
+      }
+    }
+  }
+
+  function month_backward(){
+    month --;
+    if(month < 0){
+      month = 11;
+      year--;
+    }
+    document.getElementById('calendar_container').innerHTML = '';
+    make_calendar_days(month);
+    get_events(month);
+  }
+
+  function month_forward(){
+    month ++;
+    if(month > 11){
+      month = 0;
+      year++;
+    }
+    document.getElementById('calendar_container').innerHTML = '';
+    make_calendar_days(month);
+    get_events(month);
+  }
+
+  function desmarcar(){
+    var date = document.getElementById('modal-title').innerHTML;
+    date_arr = date.split('/');
+    remove_day = date_arr[0];
+    console.log(date_arr[1]);
+    remove_info = [date_arr[0], date_arr[1], date_arr[2]];
+    var dataToSend = "variableName=" + encodeURIComponent(remove_info);
+
+    var calendar_days = document.getElementsByClassName('cell');
+
+    for(k=0; k < calendar_days.length; k++){
+      const cellText = calendar_days[k].firstChild;
+
+      if (cellText.innerHTML === remove_day) {
+        calendar_days[k].removeChild(cellText);
+        cell_ = document.createElement('a');
+        cell_.innerHTML = remove_day;
+        calendar_days[k].appendChild(cell_);
+        calendar_days[k].firstChild.classList.add('justify-content-center', 'cell');
+      }
+    }
+    var xhr = new XMLHttpRequest();
+    // Create a new XMLHttpRequest object
+    xhr.open("POST", "remove_event.php", true);
+    // Specify the request method, PHP script URL, and asynchronous
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // Set the content type
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+      // Check if the request is complete
+        if (xhr.status === 200) {
+          // Check if the request was successful
+          console.log(xhr.responseText);
+          // Output the response from the PHP script
+        }else {
+          console.error("Error:", xhr.status);
+        }
+      }
+    };
+  xhr.send(dataToSend);
+}
+
+  $(document).ready(function (){
+    make_calendar_days(month);
+    get_events(month);
+  });
+</script>
+</body>
+</html>
