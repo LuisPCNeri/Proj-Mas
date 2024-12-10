@@ -1,10 +1,10 @@
 @media (max-width: 768px) {
   #carouselExampleFade {
-    padding-top: 8vh; /* Remover o padding-top para evitar o gap */
+    padding-top: 0vh; /* Remover o padding-top para evitar o gap */
     height: 40vh; /* Ajuste para manter a altura adequada em dispositivos móveis */
   }
   .carousel,.carousel-inner,.carousel-item {
-    height: 100vh; /* Ocupa toda a altura do viewport */
+    height: 100vh!important; /* Ocupa toda a altura do viewport */
   }
 
 
@@ -25,7 +25,7 @@
     height: 9vh;
   }
   .navbar-collapse{
-    background-color:#bb9469 ;
+    background-color:rgb(246, 242, 242);
     padding: 25px;
     color: black;
     font-size:17px;
@@ -33,7 +33,9 @@
   #logoua{
     height:20px;
   }
-  
+  #estejaconnosco{
+    font-size: medium!important;
+  }
 }
 @media (max-width: 1200px) {
   .dropdown-menu{transform: translateX(-58%)!important;}
@@ -60,13 +62,18 @@ body {
 }
 .navbar {
     position: fixed;
-    background-color:#bb9469;
+    background-color:rgb(246, 242, 242);
     z-index: 10;
     height: 130px;
     width: 100%;
   }
 
-  /* Torna a navbar fixa quando o scroll acontece */
+
+.card-title{
+  font-weight: 900;
+}
+  
+/* Torna a navbar fixa quando o scroll acontece */
   .navbar.fixed-top {
     position: fixed;
     top: 0;
@@ -86,7 +93,7 @@ body {
   }
 
   .navbar-brand, .nav-link {
-    color: white !important;
+    color: black !important;
   }
 
   /* Navbar reduzida ao dar scroll */
@@ -98,7 +105,7 @@ body {
   /* Espaço para a navbar não sobrepor o conteúdo */
 
   .divcuidar{
-    background-color: #bb9469;
+    background-color:rgb(246, 242, 242);
     padding: 40px;
   }
 
