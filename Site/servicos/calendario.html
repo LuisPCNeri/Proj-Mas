@@ -205,7 +205,7 @@
     for(k=0; k < calendar_days.length; k++){
       const cellText = calendar_days[k].firstChild;
 
-      if (cellText._clickHandler) {
+      if (cellText.innerHTML === remove_day) {
         calendar_days[k].removeChild(cellText);
         cell_ = document.createElement('a');
         cell_.innerHTML = remove_day;

@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["variableName"])) {
     $stmt = $con->query($query);
 
     while($row = $stmt->fetch_assoc()){
-        $used_time = $used_time.' '.$row['time_'];
+        $used_time = $used_time.' '.$row['time_'].' '.$my_array[0].' '.$my_array[1].' '.$my_array[2];
     }
 
     $stmt->close();

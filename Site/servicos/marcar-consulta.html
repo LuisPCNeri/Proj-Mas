@@ -107,7 +107,7 @@
            <div class="col-md-5 mt-3 mb-4"> 
                 <div class="row">
                     <label for="name_animal" class="form-label">O seu animal:</label>
-                    <input type="password" class="form-control rounded-5" id="name_animal" name="name_animal">
+                    <input type="text" class="form-control rounded-5" id="name_animal" name="name_animal">
                 </div>
                 <div class="row pt-3">
                     <label for="pass_inp" class="form-label">Data: </label>
@@ -129,7 +129,7 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Doença" onclick="remove_other()">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Doenca" onclick="remove_other()">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Doença
                         </label>
@@ -154,7 +154,7 @@
                 <div class="row pt-5" id="hour_div">
                   <!--Hora: vai aparecer após carregar no dia desejado com os horários disponíveis-->
                   <!--Assumindo que 1 consulta dura 1 hora-->
-                    <p>Hora: </p>
+                    <p>Horários disponíveis: </p>
                 </div>
            </div> 
         </div>
@@ -231,8 +231,10 @@
       }
 
       function show_free_hours(used_time, date){
-        document.getElementById('hour_div').innerHTML = '<p> Hora: </p>';
-        unavailable_arr =used_time.split(' ');
+        document.getElementById('hour_div').innerHTML = '<p> Horários disponíveis: </p>';
+        unavailable_arr = used_time.split(' ');
+        unavailable_arr.shift();
+        console.log(unavailable_arr);
         hours = ['08:30', '09:30', '10:30', '11:30', '12:30', '14:30', '15:30', '16:30', '17:30', '18:30', '19:30']
 
         for(k=0; k < hours.length; k++){
@@ -247,7 +249,7 @@
           document.getElementById('hour_div').appendChild(hour_display_div);
           hour_display_div.appendChild(hour_radio);
 
-          if(unavailable_arr.includes(hours[k])){
+          if(unavailable_arr.includes(hours[k]) && date[1] === unavailable_arr[2] && date[2] === unavailable_arr[3]){
             hour_radio.innerHTML = '<s>' + hour_radio.innerHTML + '</s>';
             document.getElementById(hours[k]).disabled = true;
           }
