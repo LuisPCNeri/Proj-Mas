@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa do Cão</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+<!-- Navbar com o retângulo e a curva -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="../website-casadocao.html" id="texto-icone">Vetria</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Serviços
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="container pt-5">
+                <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-3"><a href="/servicos/osmeusanimais.html"><img src="../imagemcao1menu.png" alt="Os meus Animais"></a></div>
+                    <div class="col-3"><a href="/servicos/marcar-consulta.html"><img src="../agendar-menu.jpg" alt="Agendar Consulta"></a></div>
+                    <div class="col-3"><a href="#"><img src="../dogwalking-menu.jpg" alt="Dog-walking"></a></div>
+                    <div class="col-1"></div>
+                </div>
+              </div>
+          </ul>
+      </li>
+        <li class="nav-item" id="nav-marketplace">
+            <a class="nav-link" href="marketplace.html">Marketplace</a>
+          </li>
+        <li class="nav-item" id="nav-contact">
+          <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Contactos" aria-controls="offcanvasDark">Contactos</a>
+        </li>
+        <li class="nav-item" id="nav-about">
+          <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
+        </li>
+        <li class="nav-item" id="nav-login">
+            <a class="nav-link" href="/login e registo/log_in.html">Entrar</a>   <!-- AQUI LOGIN-->
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Curva SVG -->
+  <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7">
+    <path fill="#bb9469" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z"></path>
+  </svg>
+</nav>
+<!-- Menu lateral -->
+<div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Contactos" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Contactos</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p><i class="fa fa-regular fa-phone"></i>  Telefone: 234 348 051</p>
+      <p><i class="fa fa-exclamation-triangle"></i>  Urgências (24hr)</p>
+      <p><i class="fa fa-regular fa-phone"></i>  Telemóvel: 969 939 939</p>
+      <p> </p>
+      <p><i class="fa fa-envelope"></i> Email: </p>
+      <p>vetria.aveiro@gmail.com</p>
+    </div>
+  </div>
+  <div class=" offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDark-Sobre" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Vetria</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <p>Projeto realizado por:</p>
+      <p>125091: Bernardo Miguel dos Santos </p>
+      <p>125264: Luís Correia </p>
+      <p>124754: Mª Inês Gonçalves </p>
+      <p>125696: Rodrigo Machado Pereira </p>
+      <p>UA- deti</p>
+    </div>
+  </div>
+  <div class="container-fluid" style="padding-top: 200px; background-color: #f7eee9;">
+    <form action="pagamento.html" method="GET">
+        <div class="row">
+            <div class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-1 text-right"><span class="form-control" id="quantidades"
+                    title="Quantidade total de produtos">0</span></div>
+            <div class="col-md-2 text-right"><span class="form-control" id="total"
+                    title="Preço total da compra">0.00</span></div>
+            <div class="col-md-2 text-right">
+                <button onclick="return valid()" class="btn btn-primary rounded-5"
+                    title="Enviar pedido">Enviar</button>
+                <button type="button" onclick="clean()" class="btn btn-secondary" title="Limpar pedido"><i
+                        class="fa fa-trash-o"></i></button>
+            </div>
+        </div>
+        <hr />
+        <div class="row" style="background-color: #F0AC03;">
+            <div class="col-md-6">
+                <h1 style="margin-left: 20px; font-weight: 900;color: white;font-size: 4rem;">Tudo Para o Seu <br> Cão</h1>
+            </div>
+            <div class="col-md-6">
+                <img src="../recursos/marketplace/dog.png" style="max-width: 100%; width: 300px;">
+            </div>
+        </div>                           
+        <h1 class="border-bottom my-3 py-3">Acessórios</h1>
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/trela1.jpg"/>
+                <input type="hidden" id="qty1" name="qty1" value="0" />
+                <h5>Trela  5 metros<br /><small>fk58601</small></h5>
+                <div class="text-danger text-right"><input id="price1" name="price1" value="10.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(1)"><i
+                        class="fa fa-paw"></i> Adicionar ao cesto</button> 
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/cama1.png"/>
+                <input type="hidden" id="qty2" name="qty2" value="0" />
+                <h5>Cama de Nile Bege<br /><small>fk58602</small></h5>
+                <div class="text-danger text-right"><input id="price2" name="price2" value="29.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(2)"><i
+                        class="fa fa-paw"></i> Adicionar ao cesto</button>
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/cama2.jpg"/>
+                <input type="hidden" id="qty3" name="qty3" value="0" />
+                <h5>Sofá Oxford Cinzento<br /><small>fk58603</small></h5>
+                <div class="text-danger text-right"><input id="price3" name="price3" value="59.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(3)"><i
+                        class="fa fa-paw"></i> Adicionar ao cesto</button>
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/peitoral1.png"/>
+                <input type="hidden" id="qty4" name="qty4" value="0" />
+                <h5>Peitoral para cão Neomesh(XL)<br /><small>fk58604</small></h5>
+                <div class="text-danger text-right"><input id="price4" name="price4" value="22.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(4)"><i
+                        class="fa fa-paw"></i> Adicionar ao cesto</button>
+            </div>
+        </div>
+        <p>&nbsp;</p>
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/bola1.jpg"/>
+                <input type="hidden" id="qty5" name="qty5" value="0" />
+                <h5>Conjunto bolas Kong<br /><small>fk58605</small></h5>
+                <div class="text-danger text-right"><input id="price5" name="price5" value="9.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(5)"><i
+                        class="fa fa-paw"></i> Adicionar ao meu cesto</button>
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/brinquedocorda1.jpg"/>
+                <input type="hidden" id="qty6" name="qty6" value="0" />
+                <h5>Halter de corda<br /><small>fk58606</small></h5>
+                <div class="text-danger text-right"><input id="price6" name="price6" value="6.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(6)"><i
+                        class="fa fa-paw"></i> Adicionar ao meu cesto</button>
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/ball-treat1.jpg"/>
+                <input type="hidden" id="qty7" name="qty7" value="0" />
+                <h5>Bola com corda<br /><small>fk58607</small></h5>
+                <div class="text-danger text-right"><input id="price7" name="price7" value="15.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(7)"><i
+                        class="fa fa-paw"></i> Adicionar ao meu cesto</button>
+            </div>
+            <div class="col-sm-3">
+                <img src="../recursos/marketplace/osso1.jpg"/>
+                <input type="hidden" id="qty8" name="qty8" value="0" />
+                <h5>Osso cão porte grande<br /><small>fk58608</small></h5>
+                <div class="text-danger text-right"><input id="price8" name="price8" value="8.99"
+                        class="text-danger text-right border-0" readonly> €</div>
+                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(8)"><i
+                        class="fa fa-paw"></i> Adicionar ao meu cesto</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container-fluid" style="background-color:#bb9469; position: relative; padding: 0;">
+    <svg class="top-curve" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 728.4 77.7" style="width: 100%; height: auto;">
+      <path fill="#f7eee9" d="M0 45.3c8.9 1.7 21.6 4 37 6.6C73.7 58.1 103.2 63 140.5 66c27.4 2.1 46.8 3.6 73.5 1.3 10.9-.9 29-2.5 52-8.4 15.1-3.8 16.8-5.6 44.5-14.1 24.7-7.6 37-11.4 49.3-13.7 22.1-4 39.1-3.8 60.8-3.5 23.4.3 41.1 2.3 55.9 4 26 2.9 47.8 6.9 51.1 7.5 18.3 3.3 19.6 4.3 30.8 5.7 4.6.6 22.2 2.6 45.4 1.3 5.7-.3 21.8-1.4 42.3-5.7 7.2-1.5 18.8-4 33.5-9.2 14.6-5.2 25.4-10.7 31.3-13.7 4.4-2.2 10.2-4.3 16.7-9.2 4.1-3.1 7.2-6.1 9.2-8.3H.2L0 45.3z"></path>
+    </svg>
+    <img src="../recursos/Universidade-de-Aveiro.png" style="height:60px; position: absolute; bottom: 0; right: 0;">
+</div>
+<script>
+      $(document).ready(function (){
+    $.ajax({
+      url: 'login e registo/main.php',
+      success: function (data){
+        var user = data;
+        if(data != ""){
+          document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
+        }
+      }
+    });
+    });
+  </script>
+  <script src="marketplace.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Script para encolher a navbar ao dar scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 70) {
+        navbar.classList.add('navbar-shrink');
+      } else {
+        navbar.classList.remove('navbar-shrink');
+      }
+    });
+  
+    // Script para adicionar a classe fixed-top quando a página rolar
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 0) {
+        navbar.classList.add('fixed-top');
+      } else {
+        navbar.classList.remove('fixed-top');
+      }
+    });
+  </script>
+  </body>
+</html>
+  
