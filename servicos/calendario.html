@@ -127,7 +127,7 @@
     document.getElementById('modal-title').innerHTML = 
       `${eventData.date[0]}/${eventData.date[1]}/${eventData.date[2]}`;
     document.getElementById('modal_body').innerHTML = 
-      `Tem uma ${eventData.reason} às ${eventData.time}`;
+      `${eventData.dog} Tem uma ${eventData.reason} às ${eventData.time}`;
     $('#modal').modal('toggle');
     info = eventData.date;
     window.top.postMessage(info, '*');
