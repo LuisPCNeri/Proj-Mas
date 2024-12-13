@@ -214,6 +214,11 @@
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
     }
  });
+
+ function log_out(){
+    localStorage.removeItem('user');
+    window.location.reload();
+  } 
 </script>
 <script>
   // Script para encolher a navbar ao dar scroll
