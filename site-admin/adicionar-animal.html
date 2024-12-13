@@ -241,5 +241,14 @@
     <script src="adicionar-animal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+    $(document).ready(() => {
+        let user = localStorage.getItem('user');
+        console.log(localStorage.getItem('user'));
+        if(localStorage.user){
+          document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
+        }
+    });
+    </script>
 </body>
 </html>
