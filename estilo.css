@@ -1,13 +1,24 @@
+/*Telemovel*/
 @media (max-width: 768px) {
   #carouselExampleFade {
     padding-top: 0vh; /* Remover o padding-top para evitar o gap */
     height: 40vh; /* Ajuste para manter a altura adequada em dispositivos móveis */
   }
+  .dropdown-menu{
+    transform: none!important;
+  }
   .carousel,.carousel-inner,.carousel-item {
     height: 100vh!important; /* Ocupa toda a altura do viewport */
   }
-
-
+  #map{
+    height: 300px!important;
+  }
+  #logoua{
+    height: 20px!important;
+  }
+  #publicidade{
+    height: 150px!important;
+  }
   .navbar {
     height:100px !important;
   }
@@ -37,6 +48,10 @@
     font-size: medium!important;
   }
 }
+
+
+
+/*tablet*/
 @media (max-width: 1200px) {
   .dropdown-menu{transform: translateX(-58%)!important;}
   .carousel-inner,
@@ -44,7 +59,11 @@
     height: 70vh!important;
     padding-top: 0%!important;
   }
+  #logoua{
+    height: 25px!important;
+  }
 }
+/*transicao tablet-> pc*/
 @media (max-width: 1300px){
   .carousel-item {
     height: 130vh!important;
