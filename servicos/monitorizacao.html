@@ -24,7 +24,11 @@
     <!-- Navbar com o retângulo e a curva -->
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
+<<<<<<< HEAD
       <a class="navbar-brand" href="../index.html" id="texto-icone"><img src="../recursos/paw-title.png" style="height: 45px;"></a>
+=======
+      <a class="navbar-brand" href="../index.html" id="texto-icone">Vetria</a>
+>>>>>>> 8783c8f2d74803fc867c0a19ba03d10c2b292e57
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -106,19 +110,19 @@
             <div class="col-md-5 mt-3 mb-4">
                 <div class="row">
                     <label for="pass_inp" class="form-label">Nome</label>
-                    <input type="password" class="form-control rounded-5" id="pass_inp" name="pass_inp">
+                    <input type="password" class="form-control rounded-5" id="pass_inp" name="pass_inp" readonly>
                 </div>
                 <div class="row pt-3">
                     <label for="pass_inp" class="form-label">Histórico clínico: </label>
-                    <input type="password" class="form-control" id="pass_inp" name="pass_inp" >
+                    <input type="password" class="form-control" id="pass_inp" name="pass_inp" readonly>
                 </div>
                 <div class="row pt-3">
                     <label for="pass_inp" class="form-label">Rotinas de exercício:</label>
-                    <input type="password" class="form-control" id="pass_inp" name="pass_inp" >
+                    <input type="password" class="form-control" id="pass_inp" name="pass_inp" readonly>
                 </div>
                 <div class="row pt-3">
                     <label for="pass_inp" class="form-label">Vacinas Tomadas</label>
-                    <input type="password" class="form-control" id="pass_inp" name="pass_inp">
+                    <input type="password" class="form-control" id="pass_inp" name="pass_inp" readonly>
                 </div>
                 <div class="row pt-3">
                     <div class="col-4">
@@ -141,23 +145,18 @@
         </svg>
         <img src="../../recursos/Universidade-de-Aveiro.png" style="height:60px;float: right;">
     </footer>
-    <script>
-          $(document).ready(function (){
-        $.ajax({
-          url: 'login e registo/main.php',
-          success: function (data){
-            var user = data;
-            if(data != ""){
-              document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
-            }
-          }
-        });
-      });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="adicionar-animal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+      $(document).ready(function (){
+        let user = localStorage.getItem('user');
+        if(user != ""){
+          document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
+        }
+     });
+    </script>
 </body>
 </html>
