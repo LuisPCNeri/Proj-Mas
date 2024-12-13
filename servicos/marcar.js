@@ -2,7 +2,7 @@ const hours = ['08:30', '09:30', '10:30', '11:30', '12:30', '14:30', '15:30', '1
 
 $(document).ready(function (){
     let user = localStorage.getItem('user');
-    if(user != "" || user != null){
+    if(localStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
     }
     window.onmessage = (event) => {

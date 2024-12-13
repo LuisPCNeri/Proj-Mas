@@ -270,16 +270,16 @@
         <img src="../../recursos/Universidade-de-Aveiro.png" style="height:60px;float: right;">
     </footer>
     <script>
-            $(document).ready(function (){
-        $.ajax({
-            url: 'login e registo/main.php',
-            success: function (data){
-            var user = data;
-            if(data != "" || user != null){
-                document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
-            }
-            }
-        });
+        $(document).ready(function (){
+            $.ajax({
+                url: 'login e registo/main.php',
+                success: function (data){
+                var user = data;
+                if(localStorage.user){
+                    document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + data + '</a>';
+                }
+                }
+            });
         });
     </script>
     <script src="marketplace.js"></script>
