@@ -4,9 +4,6 @@
     padding-top: 0vh; /* Remover o padding-top para evitar o gap */
     height: 40vh; /* Ajuste para manter a altura adequada em dispositivos móveis */
   }
-  .dropdown-menu{
-    transform: none!important;
-  }
   .carousel,.carousel-inner,.carousel-item {
     height: 100vh!important; /* Ocupa toda a altura do viewport */
   }
@@ -46,6 +43,9 @@
   }
   #estejaconnosco{
     font-size: medium!important;
+  }
+  .dropdown{
+    display: none;
   }
 }
 
@@ -186,7 +186,7 @@ img {
 /*DROPDOWN MENU*/
 .dropdown-menu {
   position: absolute;
-  transform: translateX(-65%);
+  transform: translateX(-60%);
   top: 100%;
   left: 0px;
   width: 130vw; 
