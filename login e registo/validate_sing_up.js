@@ -1,20 +1,4 @@
-(function () {
-    'use strict'
 
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity() || !valida()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-            }, false)
-        })
-})()
 
 function change_validation(element){
     if(element.classList.contains("is-valid")){
@@ -52,8 +36,8 @@ function valida(){
     var all_feedback = document.getElementsByClassName("d-none");
     for(i = 0; i < all_ele.length; i++){
         if(all_ele[i].value.length < 3){
+            val = false;
             if(!all_ele[i].classList.contains("is-invalid")){
-                val = false;
                 change_validation(all_ele[i]);
                 //Precisa de uma mudança de feedback
                 //Pode ser feito com o mesmo i mas para todos os elementos com d-none
@@ -86,5 +70,28 @@ function valida(){
         change_validation(phone);
     }
 
+    if(val){create_acc();}
+
     return val;
+}
+
+function create_acc(){
+    const user = new Object();
+    user.email = document.getElementById("email_insert").value;
+    user.password = document.getElementById("new_password").value;
+    user.addr = document.getElementById('address').value;
+    user.name = document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value;
+    user.phone = document.getElementById("phone").value;
+
+    new_user = JSON.parse(sessionStorage.getItem('user')) || [];
+
+    if(new_user.find( u => u.email === user.email)){
+        alert('no');
+        return;
+    }
+
+    new_user.push(user);
+    sessionStorage.setItem('user', JSON.stringify(new_user));
+    console.log(sessionStorage.getItem('user'));
+    window.location.href = 'log_in.html';
 }
