@@ -200,7 +200,7 @@
 <script>
   $(document).ready(function (){
     let user = localStorage.getItem('user');
-    if(user != ""){
+    if(user != "" || user != null){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
     }
  });
