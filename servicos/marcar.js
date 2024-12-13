@@ -44,6 +44,8 @@ function create_obj(date){
     new_appointement.push(appointment);
     sessionStorage.setItem('appointments', JSON.stringify(new_appointement));
     console.log(sessionStorage.getItem('appointments'));
+
+    window.location.reload();
 }
 
 function get_free_time(date){

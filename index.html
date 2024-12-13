@@ -222,6 +222,9 @@
     let user = localStorage.getItem('user');
     if(localStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
+      document.getElementById('navbarDropdown').onclick = () => {};
+    }else{
+      document.getElementById('navbarDropdown').onclick = () => {window.location.href = 'login e registo/log_in.html';}
     }
  });
 
