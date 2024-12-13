@@ -82,6 +82,10 @@ function create_acc(){
     user.addr = document.getElementById('address').value;
     user.name = document.getElementById('first_name').value + ' ' + document.getElementById('last_name').value;
     user.phone = document.getElementById("phone").value;
+    console.log(user.email);
+
+    if(user.email.includes('@vetria')){ user.id = 1;}
+    console.log(user);
 
     new_user = JSON.parse(sessionStorage.getItem('user')) || [];
 

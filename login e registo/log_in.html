@@ -140,14 +140,21 @@
       <img src="../recursos/Universidade-de-Aveiro.png" style="height:60px; position: absolute; bottom: 0; right: 0;">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Scripts/jquery-3.7.1.min.js"></script> 
     <script>
-
       document.getElementById('sub_btn').onclick = () => {
         let users = JSON.parse(sessionStorage.getItem('user'));
         for(k=0; k < users.length; k++){
           if(users[k].email === document.getElementById('email_inp').value && users[k].password === document.getElementById('pass_inp').value){
             localStorage.setItem('user', users[k].email);
-            window.location.href = '../index.html';
+            console.log(users[k]);
+            if(users[k].id){
+              console.log(users[k].id);
+              window.location.href = '../site-admin/adicionar-animal.html'; 
+            }else{
+              window.location.href = '../index.html';
+            }
           }
         }
       }
