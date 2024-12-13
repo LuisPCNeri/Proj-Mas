@@ -34,7 +34,7 @@
                 </a>
               </li>
               <li class="nav-item" id="nav-marketplace">
-                  <a class="nav-link" href="calendário-admin.html">Consultas Marcadas</a>
+                  <a class="nav-link" href="calendario-admin.html">Consultas Marcadas</a>
                 </li>
               <li class="nav-item" id="nav-gerir    ">
                 <a class="nav-link" href="gerirmarketplace.html">Gerir Marketplace</a>
@@ -43,7 +43,7 @@
                 <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
               </li>
               <li class="nav-item" id="nav-login">
-                  <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+                  <a class="nav-link" href="../login e registo/log_in.html">Entrar</a> 
               </li>
             </ul>
           </div>
@@ -72,6 +72,16 @@
           <p>UA- deti</p>
         </div>
       </div>
+      <!--Menu Lateral User-->
+  <div class="offcanvas offcanvas-start text-bg-dark" id="offcanvasDark-User" tabindex="-1" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Utilizador</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a style="text-decoration: none;" calss='btn' onclick="log_out();">Log Out</a>
+    </div>
+  </div> 
     <div class="container" style="padding-top:150px;flex: 1; display: flex; flex-direction: column;">
         <div class="border-bottom py-3 mb-3">
             <h2><i class="fa fa-paw"></i>  Registo Animal</h2>
@@ -87,7 +97,7 @@
                 </tr>
             </thead>
             <tbody data-bind="foreach: participants">
-                <tr data-bind="click: function() { window.location.href = 'monitorizacao-admin.html'}" style="cursor: pointer;">
+                <tr data-bind="click: function() {send_data(this)}" style="cursor: pointer;">
                     <td data-bind="text:name"></td>
                     <td data-bind="text:email"></td>
                     <td data-bind="text:raca"></td>
@@ -229,7 +239,7 @@
         <img src="../recursos/Universidade-de-Aveiro.png" style="height:60px;float: right;">
     </footer>
     <script>
-        $(document).ready(function (){
+    $(document).ready(function (){
       $.ajax({
         url: 'login e registo/main.php',
         success: function (data){
@@ -254,6 +264,11 @@
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
     });
+
+    function log_out(){
+        localStorage.removeItem('user');
+        window.location.reload();
+      }
     </script>
 </body>
 </html>

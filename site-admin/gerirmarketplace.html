@@ -2,6 +2,7 @@
 <html style="height: 100%;">
 <head>
     <title>Vetria</title>
+    <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
@@ -35,7 +36,7 @@
               </a>
             </li>
             <li class="nav-item" id="nav-marketplace">
-                <a class="nav-link" href="calendário-admin.html">Consultas Marcadas</a>
+                <a class="nav-link" href="calendario-admin.html">Consultas Marcadas</a>
               </li>
             <li class="nav-item" id="nav-gerir    ">
               <a class="nav-link" href="gerirmarketplace.html" >Gerir Marketplace</a>
@@ -44,7 +45,7 @@
               <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
             </li>
             <li class="nav-item" id="nav-login">
-                <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+                <a class="nav-link" href="../login e registo/log_in.html">Entrar</a> 
             </li>
           </ul>
         </div>
@@ -86,6 +87,16 @@
         <p>124754: Mª Inês Gonçalves </p>
         <p>125696: Rodrigo Machado Pereira </p>
         <p>UA- deti</p>
+      </div>
+    </div>
+    <!--Menu Lateral User-->
+    <div class="offcanvas offcanvas-start text-bg-dark" id="offcanvasDark-User" tabindex="-1" aria-labelledby="offcanvasDarkLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkLabel">Utilizador</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <a style="text-decoration: none;" calss='btn' onclick="log_out();">Log Out</a>
       </div>
     </div>
     <div class="container" style="padding-top: 180px;">
@@ -166,6 +177,11 @@
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
       });
+
+      function log_out(){
+        localStorage.removeItem('user');
+        window.location.reload();
+      }
     </script>
 </body>
 </html>

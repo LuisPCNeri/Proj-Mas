@@ -2,6 +2,7 @@
 <html style="height: 100%;">
 <head>
     <title>Vetria</title>
+    <meta charset="UTF-8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap">
@@ -35,7 +36,7 @@
               </a>
             </li>
             <li class="nav-item" id="nav-marketplace">
-                <a class="nav-link" href="calendário-admin.html">Consultas Marcadas</a>
+                <a class="nav-link" href="calendario-admin.html">Consultas Marcadas</a>
               </li>
             <li class="nav-item" id="nav-contact">
               <a class="nav-link" href="gerirmarketplace.html" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Contactos" aria-controls="offcanvasDark">Gerir Marketplace</a>
@@ -69,13 +70,23 @@
       </div>
     </div>
     </div>
+        <!--Menu Lateral User-->
+  <div class="offcanvas offcanvas-start text-bg-dark" id="offcanvasDark-User" tabindex="-1" aria-labelledby="offcanvasDarkLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasDarkLabel">Utilizador</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a style="text-decoration: none;" calss='btn' onclick="log_out();">Log Out</a>
+    </div>
+  </div>
     <div class="container" style="padding-top: 180px;">
         <div class="row border-bottom"><h1>Monitorização do estado físico</h1></div>
         <div class="row">
             <div class="col-md-5 mt-3 mb-4">
                 <div class="row">
                     <label for="pass_inp" class="form-label">Nome</label>
-                    <input class="form-control rounded-5" id="nome" name="pass_inp">
+                    <input class="form-control rounded-5" id="nome" name="pass_inp" readonly>
                 </div>
                 <div class="row pt-3">
                     <label for="pass_inp" class="form-label">Histórico clínico: </label>
@@ -91,7 +102,7 @@
                 </div>
                 <div class="row pt-3">
                     <div class="col-4">
-                        <button class="btn btn-primary rounded-5">Guardar</button> 
+                        <button class="btn btn-primary rounded-5" onclick="save_data()">Guardar</button> 
                     </div>
                     <div class="col-4">
                       <a href="adicionar-animal.html" class="btn btn-primary rounded-5">Voltar</a> 
@@ -123,6 +134,12 @@
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
       });
+
+    function log_out(){
+      localStorage.removeItem('user');
+      window.location.reload();
+    }
     </script>
+    <script src="monitorizacao.js"></script>
 </body>
 </html>

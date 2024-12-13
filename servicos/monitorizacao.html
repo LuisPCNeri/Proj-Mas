@@ -171,6 +171,7 @@
         if(localStorage.user){
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
+        console.log(localStorage.getItem('animal_data'));
      });
 
      function log_out(){
@@ -178,5 +179,6 @@
         window.location.reload();
       } 
     </script>
+    <script src="monitorizacao.js"></script>
 </body>
 </html>

@@ -44,6 +44,11 @@
             participant.sex = $("#createParticipantModal input[type=radio]:checked").val();
             participant.raca= $("#exampleInputraca1").val();
             //--- insere novo participante na lista
+            let animals = JSON.parse(sessionStorage.getItem('animals')) || [];
+            console.log(animals);
+            animals.push(participant);
+            sessionStorage.setItem('animals', JSON.stringify(animals));
+
             self.participants.push(participant);
             console.log(participant);
             //--- ordena a lista alfabeticamente pelo nome
@@ -73,8 +78,9 @@
         self.readParticipants = function () {
             console.log('init');
             //--- carrega a lista com um conjunto de participantes
-            self.participants([
-            ]);
+            for(i=0; i < JSON.parse(sessionStorage.getItem('animals')).length; i++){
+                self.participants.push(JSON.parse(sessionStorage.getItem('animals'))[i])
+            }
             //--- ordena a lista alfabeticamente pelo nome
             self.participants.sort(
                 function (left, right) {
@@ -111,6 +117,14 @@
         self.deleteParticipant = function (participant) {
             console.log('deleteParticipant');
             //--- apaga um participante da lista 
+            let animals = JSON.parse(sessionStorage.getItem('animals'));
+            console.log(participant);
+            for(k=0;k < animals.length; k++){
+                if(JSON.stringify(participant) === JSON.stringify(animals[k])){
+                    animals.splice(animals.indexOf(animals[k]), 1);
+                    sessionStorage.setItem('animals', JSON.stringify(animals)); 
+                }
+            }
             self.participants.remove(participant);
             console.log(this);
         };
@@ -138,4 +152,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Nome carregado:', nome);
     }
 });
+
+function send_data(obj){
+    console.log(obj);
+    localStorage.setItem('animal_data', JSON.stringify(obj));
+    window.location.href = 'monitorizacao-admin.html';
+}
 
