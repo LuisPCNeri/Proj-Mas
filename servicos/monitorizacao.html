@@ -47,7 +47,7 @@
                     <div class="container pt-5">
                       <div class="row">
                           <div class="col-2"></div>
-                          <div class="col-3"><a href="/servicos/osmeusanimais.html"><img src="../imagemcao1menu.jpeg" alt="Os meus Animais"></a></div>
+                          <div class="col-3"><a href="osmeusanimais.html"><img src="../imagemcao1menu.jpeg" alt="Os meus Animais"></a></div>
                           <div class="col-3"><a href="marcar-consulta.html"><img src="../agendar-menu.jpg" alt="Agendar Consulta"></a></div>
                           <div class="col-3"><a href="dogwalking.html"><img src="../dogwalking-menu.jpg" alt="Dog-walking"></a></div>
                           <div class="col-1"></div>
@@ -56,7 +56,7 @@
                 </ul>
             </li>
               <li class="nav-item" id="nav-marketplace">
-                  <a class="nav-link" href="Marketplace/marketplace.html">Marketplace</a>
+                  <a class="nav-link" href="../Marketplace/marketplace.html">Marketplace</a>
                 </li>
               <li class="nav-item" id="nav-contact">
                 <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Contactos" aria-controls="offcanvasDark">Contactos</a>
@@ -171,7 +171,7 @@
         if(localStorage.user){
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
-        console.log(localStorage.getItem('animal_data'));
+        console.log(JSON.parse(localStorage.getItem('animal_data')));
      });
 
      function log_out(){
