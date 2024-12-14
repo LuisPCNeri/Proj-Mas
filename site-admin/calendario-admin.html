@@ -64,7 +64,7 @@
           <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-Sobre" aria-controls="offcanvasDark">Sobre</a>
         </li>
         <li class="nav-item" id="nav-login">
-            <a class="nav-link" href="/login e registo/log_in.html">Entrar</a> 
+            <a class="nav-link" href="../login e registo/log_in.html">Entrar</a> 
         </li>
       </ul>
     </div>
@@ -140,20 +140,33 @@
 <script src="Scripts/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  $(document).ready(() => {
+    $(document).ready(function (){
     let user = localStorage.getItem('user');
-    console.log(localStorage.getItem('user'));
     if(localStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
+      document.getElementById('navbarDropdown').onclick = () => {};
+    }else{
+      document.getElementById('navbarDropdown').onclick = () => {window.location.href = 'login e registo/log_in.html';}
     }
-  });
-</script>
+ });
 
+ function log_out(){
+    localStorage.removeItem('user');
+    window.location.reload();
+  }
+</script>
 <script>
   const month_names = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   var today = new Date();
   month = today.getMonth();
   year = today.getFullYear();
+
+  function handle_click_add(obj){
+    return () => {
+      info = [obj.innerHTML, month, year];
+      window.top.postMessage(info, '*');
+    };
+  }
 
   function days_in_month(month, year){
     return new Date(year, month + 1, 0).getDate();
@@ -177,9 +190,10 @@
         
         cell.appendChild(cell_text);
         cell_text.innerHTML = String(date);
+        cell_text.addEventListener('click', handle_click_add(cell_text));
 
         if(date === today.getDate() && month === today.getMonth() && year === today.getFullYear()){
-          cell_text.classList.add('cell-text')
+          cell_text.classList.add('cell-text');
           cell_text.classList.add('nav-link');
         }
         date++;
@@ -189,46 +203,34 @@
   }
 
   function get_events(month){
-    $.ajax({
-      url: 'calendario.php',
-      success: (data) => {
-        ordered_data_array = [];
-        ordered_data = [];
-        data = data.split('"');
-        data.pop();
-        data.shift();
-        
-        for(k=0; k < data.length; k++){
-          if(data[k] != ',' && data[k] != ']['){ordered_data.push(data[k]);}
-          if(ordered_data.length === 5){
-            ordered_data_array.push(ordered_data);
-            ordered_data = [];
-          }
-        }
-         
-        do_events(ordered_data_array, month);
-      }
-    });
+    const events_ = JSON.parse(sessionStorage.getItem('appointments'));
+    do_events(events_, month);
   }
 
   function handleDayClick(eventData) {
   return function () {
     document.getElementById('modal-title').innerHTML = 
-      `${eventData[1]}/${eventData[2]}/${eventData[3]}`;
+      `${eventData.date[0]}/${eventData.date[1]}/${eventData.date[2]}`;
     document.getElementById('modal_body').innerHTML = 
-      `Tem uma ${eventData[0]} às ${eventData[4]}`;
+      `${eventData.user} tem uma ${eventData.reason} às ${eventData.time}`;
     $('#modal').modal('toggle');
+    info = eventData.date;
+    window.top.postMessage(info, '*');
+    console.log(info);
     };
   }
 
+
   function do_events(events, month){
+    console.log(events);
     days_arr = document.getElementsByClassName('cell');
     for(k=0; k < days_arr.length; k++){
       for(i=0; i < events.length; i++){
-        if(events[i][1] === days_arr[k].firstChild.innerHTML && events[i][2] === String(month + 1) && events[i][3] === String(year)){
+        if(events[i].date[0] === days_arr[k].firstChild.innerHTML && events[i].date[1] === String(month) && events[i].date[2] === String(year)){
           const eventData = events[i];
+          console.log(eventData);
           days_arr[k].firstChild.classList.add('cell-text', 'nav-link');
-
+          
           days_arr[k].firstChild.addEventListener('click', handleDayClick(eventData));
           days_arr[k].firstChild._clickHandler = handleDayClick(eventData);
         }
@@ -237,7 +239,6 @@
   }
 
   function month_backward(){
-    console.log(month);
     month --;
     if(month < 0){
       month = 11;
@@ -260,46 +261,39 @@
   }
 
   function desmarcar(){
+    let appointments = JSON.parse(sessionStorage.getItem('appointments'));
+    console.log(appointments);
     var date = document.getElementById('modal-title').innerHTML;
     date_arr = date.split('/');
-    remove_day = date_arr[2];
-    console.log(date_arr[1]);
-    remove_info = [date_arr[2], date_arr[1], date_arr[0]];
-    var dataToSend = "variableName=" + encodeURIComponent(remove_info);
+    remove_day = date_arr[0];
+    console.log(document.getElementById('modal_body').innerHTML);
+    time = document.getElementById('modal_body').innerHTML.split(' ');
+    time = time[time.length - 1];
+    console.log(time);
 
     var calendar_days = document.getElementsByClassName('cell');
 
     for(k=0; k < calendar_days.length; k++){
       const cellText = calendar_days[k].firstChild;
 
-      if (cellText._clickHandler) {
+      if (cellText.innerHTML === remove_day) {
         calendar_days[k].removeChild(cellText);
         cell_ = document.createElement('a');
         cell_.innerHTML = remove_day;
         calendar_days[k].appendChild(cell_);
         calendar_days[k].firstChild.classList.add('justify-content-center', 'cell');
-      }
-    }
-    var xhr = new XMLHttpRequest();
-    // Create a new XMLHttpRequest object
-    xhr.open("POST", "../calendário/remove_event.php", true);
-    // Specify the request method, PHP script URL, and asynchronous
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    // Set the content type
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-      // Check if the request is complete
-        if (xhr.status === 200) {
-          // Check if the request was successful
-          console.log(xhr.responseText);
-          // Output the response from the PHP script
-        }else {
-          console.error("Error:", xhr.status);
+
+        for(i=0; i < appointments.length; i++){
+          if(appointments[i].date[0] === date_arr[0] && appointments[i].date[1] === date_arr[1] && appointments[i].date[2] === date_arr[2] && appointments[i].time === time){
+            console.log(appointments);
+            appointments.pop(appointments[i]);
+            console.log(appointments);
+            sessionStorage.setItem('appointments', JSON.stringify(appointments));
+          }
         }
       }
-    };
-  xhr.send(dataToSend);
-}
+    }
+  }
 
   $(document).ready(function (){
     make_calendar_days(month);
