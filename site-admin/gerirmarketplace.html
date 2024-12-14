@@ -101,61 +101,92 @@
     </div>
     <div class="container" style="padding-top: 180px;">
       <div class="row" style="text-align: center;"><h1>Gerir Marketplace</h1></div>
-      <div class="row pt-5 border-bottom"><h4>Pedidos pendentes</h4></div>
+      <div class="row pt-5 border-bottom"><h4>Produtos no Marketplace</h4></div>
       <div class="row pt-3">
         <table class="table table-sm table-striped">
           <thead class="bg-dark text-light">
               <tr>
-                  <th>Produtos Vendidos</th>
-                  <th>Nº do pedido</th>
+                  <th>Nome do Produto</th>
+                  <th>Id do Produto</th>
                   <th>Preço</th>
                   <th>Fornecedor</th>
                   <th></th>
               </tr>
           </thead>
           <tbody data-bind="foreach: participants">
-              <tr data-bind="click: function() { window.location.href = 'monitorizacao-admin.html'}" style="cursor: pointer;">
+              <tr style="cursor: pointer;">
                   <td data-bind="text:name"></td>
-                  <td data-bind="text:email"></td>
-                  <td data-bind="text:raca"></td>
-                  <td data-bind="text:sex"></td>
+                  <td data-bind="text:id"></td>
+                  <td data-bind="text:price"></td>
+                  <td data-bind="text:colaborator"></td>
                   <td class="text-end">
-                      <button class="btn btn-sm btn-primary"
-                              data-bind="click : $parent.readParticipant"
-                              data-bs-target="#readParticipantModal"
-                              data-bs-toggle="modal">
-                          <i class="fa fa-edit"></i>
-                      </button>
                       <button class="btn btn-sm btn-danger" data-bind="click:$parent.deleteParticipant"><i class="fa fa-trash-o"></i></button>
                   </td>
               </tr>
           </tbody>
       </table>
     </div>
-      <div class="row border-bottom" style="padding-top: 150px;"><h4>Produtos no Marketplace</h4></div>
-      <div class="row pt-3">
-        <table class="table table-sm table-striped">
-          <thead class="bg-dark text-light">
-              <tr>
-                  <th>Nome do produto</th>
-                  <th>Preço</th>
-                  <th>Código do produto</th>
-                  <th>Fornecedor</th>
-                  <th></th>
-              </tr>
-          </thead>
-          <tbody data-bind="foreach: participants">
-              <tr>
-                  <td data-bind="text:nome"></td>
-                  <td data-bind="text:preco"></td>
-                  <td data-bind="text:codigo"></td>
-                  <td data-bind="text:fornecedor"></td>
-                  <td class="text-end">
-                      <button class="btn btn-sm btn-danger" data-bind="click:$parent.deleteParticipant"><i class="fa fa-trash-o"></i></button>
-                  </td>
-              </tr>
-          </tbody>
-        </table>
+        <p class="text-end">
+          <button data-bs-target="#product_modal" data-bs-toggle="modal" class="btn btn-outline-dark"><i class="fa fa-plus"></i></button>
+          <button data-bind="click:readParticipants, disable : hasParticipants" class="btn btn-outline-dark"><i class="fa fa-folder-open-o"></i></button>
+        </p>
+      </div>
+    </div>
+    <div class="modal modal-lg" id="product_modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #bb9469;">
+            <h5 class="modal-title text-light">Adicionar produto</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row mb-3">
+                <div class="col-2 col-form-label">
+                  <p class="form-label">Nome: </p>
+                </div>
+                <div class="col-10">
+                  <input class="form-control" type="text" id="product_name" placeholder="Name">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-2 col-form-label">
+                  <label for="product_id" class="form-label">Id do porduto:</label>
+                </div>
+                <div class="col-10">
+                  <input type="text" class="form-control" placeholder="ID" id="product_id">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-2 col-form-label">
+                  <label for="product_price" class="form-label">Preço:</label>
+                </div>
+                <div class="col-10 align-center">
+                  <input type="text" class="form-control" placeholder="Preço" id="product_price">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-2 col-form-label">
+                  <label for="product_colaborator" class="form-label">Fornecedor:</label>
+                </div>
+                <div class="col-10 align-center">
+                  <input type="text" class="form-control" placeholder="Fornecedor" id="product_colaborator">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2 col-form-label">
+                  <label for="product_image" class="form-label">Imagem:</label>
+                </div>
+                <div class="col-10">
+                  <input type="file" class="form-control" placeholder="Image" accept="image/*" id="product_image">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-sm" data-bind="click : create_participant">Create</button>
+          </div>
+        </div>
       </div>
     </div>
     <footer class="container-fluid" style="background-color:rgb(246, 242, 242); padding:0px;">
@@ -166,9 +197,9 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="adicionar-animal.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="marketplace.js"></script>
     <script>
       $(document).ready(() => {
         let user = localStorage.getItem('user');

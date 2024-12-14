@@ -2,11 +2,26 @@ window.onload = () => {
     const animal_data = JSON.parse(sessionStorage.getItem('animal_data'));
     for(k=0; k < animal_data.length ;k++){
         if(animal_data[k].owner === localStorage.getItem('user')){
-            console.log(animal_data[k]);
             create_card(animal_data[k]);
         }
     }
 };
+
+function send_data(obj){
+    console.log(obj);
+    // Navigate to the parent card of the clicked button
+    const card = obj.closest('.card');
+    
+    // Extract data from the card (name, sex, and race in this case)
+    const name = card.querySelector('.card-title').textContent.trim();
+    const sex = card.querySelector('.list-group-item:nth-child(1)').textContent.split(': ')[1].trim();
+    const race = card.querySelector('.list-group-item:nth-child(2)').textContent.split(': ')[1].trim();
+    const animalData = { name, sex, race };
+
+    localStorage.setItem('animal_data', JSON.stringify(animalData));
+
+    window.location.href = "monitorizacao.html";
+}
 
 function create_card(obj){
     const parent = document.getElementById('animal_content');
@@ -25,11 +40,7 @@ function create_card(obj){
         <li class="list-group-item">Raça: ${obj.race} </li>
         </ul>
         <div class="card-body">
-        <a href="monitorizacao.html" class="card-link"><button class="btn btn-primary rounded-5" onlick="send_data(this);">Ir para:</button></a>
+        <a class="card-link"><button class="btn btn-primary rounded-5" onclick="send_data(this);">Ir para:</button></a>
         </div>
     </div>`;
-}
-
-function send_data(obj){
-    localStorage.setItem('animal_data', obj);
 }

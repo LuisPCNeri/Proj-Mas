@@ -108,7 +108,7 @@
     </div>
   </div>
   <div class="container-fluid" style="padding-top: 200px; background-color: #f7eee9;">
-    <form action="pagamento.html" method="GET">
+    <form action="pagamento.html" method="GET" id="form">
         <div class="row">
             <div class="col-md-1 offset-6 text-right"><i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
             </div>
@@ -133,14 +133,14 @@
             </div>
         </div>                           
         <h1 class="border-bottom my-3 py-3">Acessórios</h1>
-        <div class="row">
+        <div class="row product_row">
             <div class="col-sm-3">
                 <img src="../recursos/marketplace/trela1.jpg"/>
                 <input type="hidden" id="qty1" name="qty1" value="0" />
                 <h5>Trela  5 metros<br /><small>fk58601</small></h5>
                 <div class="text-danger text-right"><input id="price1" name="price1" value="10.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(1)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="10.99€"><i
                         class="fa fa-paw"></i> Adicionar ao cesto</button> 
             </div>
             <div class="col-sm-3">
@@ -149,7 +149,7 @@
                 <h5>Cama de Nile Bege<br /><small>fk58602</small></h5>
                 <div class="text-danger text-right"><input id="price2" name="price2" value="29.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(2)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="29.99€"><i
                         class="fa fa-paw"></i> Adicionar ao cesto</button>
             </div>
             <div class="col-sm-3">
@@ -158,7 +158,7 @@
                 <h5>Sofá Oxford Cinzento<br /><small>fk58603</small></h5>
                 <div class="text-danger text-right"><input id="price3" name="price3" value="59.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(3)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="59.99€"><i
                         class="fa fa-paw"></i> Adicionar ao cesto</button>
             </div>
             <div class="col-sm-3">
@@ -167,19 +167,19 @@
                 <h5>Peitoral para cão Neomesh(XL)<br /><small>fk58604</small></h5>
                 <div class="text-danger text-right"><input id="price4" name="price4" value="22.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(4)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="22.99€"><i
                         class="fa fa-paw"></i> Adicionar ao cesto</button>
             </div>
         </div>
         <p>&nbsp;</p>
-        <div class="row">
+        <div class="row product_row">
             <div class="col-sm-3">
                 <img src="../recursos/marketplace/bola1.jpg"/>
                 <input type="hidden" id="qty5" name="qty5" value="0" />
                 <h5>Conjunto bolas Kong<br /><small>fk58605</small></h5>
                 <div class="text-danger text-right"><input id="price5" name="price5" value="9.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(5)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="9.99€"><i
                         class="fa fa-paw"></i> Adicionar ao meu cesto</button>
             </div>
             <div class="col-sm-3">
@@ -188,7 +188,7 @@
                 <h5>Halter de corda<br /><small>fk58606</small></h5>
                 <div class="text-danger text-right"><input id="price6" name="price6" value="6.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(6)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="6.99€"><i
                         class="fa fa-paw"></i> Adicionar ao meu cesto</button>
             </div>
             <div class="col-sm-3">
@@ -197,7 +197,7 @@
                 <h5>Bola com corda<br /><small>fk58607</small></h5>
                 <div class="text-danger text-right"><input id="price7" name="price7" value="15.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(7)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="15.99€"><i
                         class="fa fa-paw"></i> Adicionar ao meu cesto</button>
             </div>
             <div class="col-sm-3">
@@ -206,7 +206,7 @@
                 <h5>Osso cão porte grande<br /><small>fk58608</small></h5>
                 <div class="text-danger text-right"><input id="price8" name="price8" value="8.99"
                         class="text-danger text-right border-0" readonly> €</div>
-                <button type="button" class="btn btn-primary rounded-5" onclick="this.blur(); addProduct(8)"><i
+                <button type="button" class="btn btn-primary rounded-5 add-to-cart" data-price="8.99€"><i
                         class="fa fa-paw"></i> Adicionar ao meu cesto</button>
             </div>
         </div>
@@ -226,6 +226,9 @@
     let user = localStorage.getItem('user');
     if(localStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
+      document.getElementById('navbarDropdown').onclick = () => {};
+    }else{
+      document.getElementById('navbarDropdown').onclick = () => {window.location.href = '../login e registo/log_in.html';}
     }
  });
 
@@ -258,4 +261,3 @@
 <script src="marketplace.js"></script>
 </body>
 </html>
-  

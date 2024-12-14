@@ -1,4 +1,5 @@
 window.onload = () => {
+    console.log(localStorage.getItem('animal_data'));
     const animal = JSON.parse(localStorage.getItem('animal_data'));
     const animal_data = JSON.parse(sessionStorage.getItem('animal_data'));
 
