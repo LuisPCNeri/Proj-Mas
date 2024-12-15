@@ -22,4 +22,5 @@ function save_data(){
     sessionStorage.setItem('animal_data', JSON.stringify(all_data));
 
     console.log(JSON.parse(sessionStorage.getItem('animal_data')));
+    window.location.href = 'adicionar-animal.html';
 }
