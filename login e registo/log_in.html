@@ -156,6 +156,8 @@
         let users = JSON.parse(sessionStorage.getItem('user'));
         for(k=0; k < users.length; k++){
           if(users[k].email === document.getElementById('email_inp').value && users[k].password === document.getElementById('pass_inp').value){
+            document.getElementById('email_inp').classList.add('is-valid');
+            document.getElementById('pass_inp').classList.add('is-invalid');
             localStorage.setItem('user', users[k].email);
             console.log(users[k]);
             if(users[k].id){
@@ -164,6 +166,9 @@
             }else{
               window.location.href = '../index.html';
             }
+          }else{
+            document.getElementById('email_inp').classList.add('is-invalid');
+            document.getElementById('pass_inp').classList.add('is-invalid');
           }
         }
       }

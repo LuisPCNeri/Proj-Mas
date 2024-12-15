@@ -79,5 +79,5 @@ function get_free_time(date){
 
 function log_out(){
     localStorage.removeItem('user');
-    window.location.reload();
+    window.location.href = '../login e registo/log_in.html';
 } 
