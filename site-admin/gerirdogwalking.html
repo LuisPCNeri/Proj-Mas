@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html style="height: 100%;">
 <head>
     <title>Casa do Cão</title>
@@ -23,14 +23,14 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-fixed">
         <div class="container">
-            <a class="navbar-brand" href="#" id="texto-icone"><img src="../recursos/paw-title.png" style="height: 45px;"></a>
+            <a class="navbar-brand" href="adicionar-animal.html" id="texto-icone"><img src="../recursos/paw-title.png" style="height: 45px;"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse rounded-5" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item" id="nav-services">
-                <a class="nav-link" href="#" >
+                <a class="nav-link" href="adicionar-animal.html" >
                   Adicionar Animal
                 </a>
               </li>
@@ -86,33 +86,26 @@
       <a style="text-decoration: none;" calss='btn' onclick="log_out();">Log Out</a>
     </div>
   </div> 
-    <div class="container" style="padding-top:150px;flex: 1; display: flex; flex-direction: column;">
+    <div class="container" style="padding-top:170px;flex: 1; display: flex; flex-direction: column;">
+        <div class="row pb-3" style="text-align: center;"><h1>Gerir Dog-Walking</h1></div>
         <div class="border-bottom py-3 mb-3">
-            <h2><i class="fa fa-paw"></i>  Registo Animal</h2>
+            <h2><i class="fa fa-user"></i>  Cuidadores</h2>
         </div>
         <table class="table table-sm table-striped">
             <thead class="bg-dark text-light">
                 <tr>
-                    <th>Nome do Animal</th>
-                    <th>Email do Dono</th>
-                    <th>Raça</th>
-                    <th>Sexo</th>
+                    <th>Nome do Cuidador</th>
+                    <th>Telemóvel</th>
+                    <th>Avaliação</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: participants">
                 <tr data-bind="click: function() {send_data(this)}" style="cursor: pointer;">
                     <td data-bind="text:name"></td>
-                    <td data-bind="text:email"></td>
-                    <td data-bind="text:raca"></td>
-                    <td data-bind="text:sex"></td>
+                    <td data-bind="text:#"></td>
+                    <td data-bind="text:#"></td>
                     <td class="text-end">
-                        <button class="btn btn-sm btn-primary"
-                                data-bind="click : $parent.readParticipant"
-                                data-bs-target="#readParticipantModal"
-                                data-bs-toggle="modal">
-                            <i class="fa fa-edit"></i>
-                        </button>
                         <button class="btn btn-sm btn-danger" data-bind="click:$parent.deleteParticipant"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
@@ -128,7 +121,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #bb9469;">
-                    <h5 class="modal-title text-light">Novo Animal</h5>
+                    <h5 class="modal-title text-light">Novo Cuidador</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -140,97 +133,15 @@
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Email do Dono:</label>
+                            <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Telemóvel:</label>
                             <div>
                                 <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputAddress1" class="col-sm-2 col-form-label">Address do Dono:</label>
-                            <div>
-                                <textarea type="text" class="form-control" id="exampleInputAddress1" placeholder="Address" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputBirthDate1" class="col-sm-4 col-form-label">Data de Nascimento do Animal:</label>
-                            <div>
-                                <input type="text" class="form-control" id="exampleInputBirthDate1" placeholder="BirthDate">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label class="col-sm-2 col-form-label">Sexo:</label>
-                            <div>
-                                <label class="radio-inline col-sm-3"><input type="radio" name="exampleInputSex1" value="Male"> Male</label>
-                                <label class="radio-inline col-sm-3"><input type="radio" name="exampleInputSex1" value="Female"> Female</label>
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputraca1" class="col-sm-2 col-form-label">Raça</label>
-                            <div>
-                                <input type="text" class="form-control" id="exampleInputraca1" placeholder="Raça">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-sm" data-bind="click : createParticipant">Create</button>
-                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal EDIT Participant -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="readParticipantModal">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header text-light" style="background-color: #bb9469;">
-                    <h5 class="modal-title">Editar Animal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="hidden" id="exampleHiddenIndex2" />
-                        <div class="mb-1 row">
-                            <label for="exampleInputName2" class="col-sm-2 col-form-label">Nome:</label>
-                            <div>
-                                <input type="text" class="form-control" id="exampleInputName2" placeholder="Name">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputEmail2" class="col-sm-2 col-form-label">Email do Dono:</label>
-                            <div>
-                                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputAddress2" class="col-sm-2 col-form-label">Address do Dono:</label>
-                            <div>
-                                <textarea type="text" class="form-control" id="exampleInputAddress2" placeholder="Address" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputBirthDate2" class="col-sm-4 col-form-label">Data de nascimento do Animal:</label>
-                            <div>
-                                <input type="text" class="form-control" id="exampleInputBirthDate2" placeholder="BirthDate">
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label class="col-sm-2 col-form-label">Sexo:</label>
-                            <div>
-                                <label class="radio-inline col-sm-3"><input type="radio" name="exampleInputSex2" value="Male"> Male</label>
-                                <label class="radio-inline col-sm-3"><input type="radio" name="exampleInputSex2" value="Female"> Female</label>
-                            </div>
-                        </div>
-                        <div class="mb-1 row">
-                            <label for="exampleInputraca2" class="col-sm-2 col-form-label">Raça:</label>
-                            <div>
-                                <input type="text" class="form-control" id="exampleInputraca2" placeholder="BirthDate">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary btn-sm" data-bind="click : updateParticipant">Update</button>
                     <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
