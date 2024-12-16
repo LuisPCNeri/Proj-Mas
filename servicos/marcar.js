@@ -1,8 +1,8 @@
 const hours = ['08:30', '09:30', '10:30', '11:30', '12:30', '14:30', '15:30', '16:30', '17:30', '18:30', '19:30'];
 
 $(document).ready(function (){
-    let user = localStorage.getItem('user');
-    if(localStorage.user){
+    let user = sessionStorage.getItem('user');
+    if(sessionStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
     }
     window.onmessage = (event) => {
@@ -26,7 +26,7 @@ function other_display(obj){
 // Cria uma nova consulta
 function create_obj(date){
     const appointment = new Object();
-        appointment.user = localStorage.getItem('user');
+        appointment.user = sessionStorage.getItem('user');
         var radios = document.getElementsByName('flexRadioDefault');
         for(k=0; k < radios.length; k++){
             if(radios[k].checked){ appointment.reason = radios[k].value; break;}
@@ -40,17 +40,17 @@ function create_obj(date){
         appointment.date = date_time[1].split(',');
         appointment.dog = document.getElementById('name_animal').value;
 
-    var new_appointement = JSON.parse(sessionStorage.getItem('appointments')) || [];
+    var new_appointement = JSON.parse(localStorage.getItem('appointments')) || [];
     new_appointement.push(appointment);
-    sessionStorage.setItem('appointments', JSON.stringify(new_appointement));
-    console.log(sessionStorage.getItem('appointments'));
+    localStorage.setItem('appointments', JSON.stringify(new_appointement));
+    console.log(localStorage.getItem('appointments'));
 
     window.location.reload();
 }
 
 function get_free_time(date){
     document.getElementById('hour_div').innerHTML = '<p> Horários disponíveis: </p>';
-    const appointments = JSON.parse(sessionStorage.getItem('appointments')) || [];
+    const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
     console.log(appointments);
 
     for(k=0; k < hours.length; k++){
@@ -78,6 +78,6 @@ function get_free_time(date){
 }
 
 function log_out(){
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     window.location.href = '../login e registo/log_in.html';
 } 

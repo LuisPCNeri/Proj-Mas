@@ -156,7 +156,7 @@
               </div>
               <div class="row mb-3">
                 <div class="col-2 col-form-label">
-                  <label for="product_id" class="form-label">Id do porduto:</label>
+                  <label for="product_id" class="form-label">Id do produto:</label>
                 </div>
                 <div class="col-10">
                   <input type="text" class="form-control" placeholder="ID" id="product_id">
@@ -207,15 +207,15 @@
     <script src="marketplace.js"></script>
     <script>
       $(document).ready(() => {
-        let user = localStorage.getItem('user');
-        console.log(localStorage.getItem('user'));
-        if(localStorage.user){
+        let user = sessionStorage.getItem('user');
+        console.log(sessionStorage.getItem('user'));
+        if(sessionStorage.user){
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
       });
 
       function log_out(){
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         window.location.href = '../login e registo/log_in.html';
       }
     </script>

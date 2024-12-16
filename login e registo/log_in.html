@@ -152,12 +152,12 @@
     <script src="Scripts/jquery-3.7.1.min.js"></script> 
     <script>
       document.getElementById('sub_btn').onclick = () => {
-        let users = JSON.parse(sessionStorage.getItem('user'));
+        let users = JSON.parse(localStorage.getItem('user'));
         for(k=0; k < users.length; k++){
           if(users[k].email === document.getElementById('email_inp').value && users[k].password === document.getElementById('pass_inp').value){
             document.getElementById('email_inp').classList.add('is-valid');
-            document.getElementById('pass_inp').classList.add('is-invalid');
-            localStorage.setItem('user', users[k].email);
+            document.getElementById('pass_inp').classList.add('is-valid');
+            sessionStorage.setItem('user', users[k].email);
             console.log(users[k]);
             if(users[k].id){
               console.log(users[k].id);

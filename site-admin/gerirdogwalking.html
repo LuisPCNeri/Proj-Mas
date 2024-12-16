@@ -125,20 +125,38 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <div>
                         <div class="mb-1 row">
-                            <label for="exampleInputName1" class="col-2 col-form-label">Nome:</label>
+                            <label for="name" class="col-2 col-form-label">Nome:</label>
                             <div class="col-10">
-                                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                                <input type="text" class="form-control" id="name" placeholder="Nome">
                             </div>
                         </div>
                         <div class="mb-1 row">
-                            <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Telemóvel:</label>
+                            <label for="phone" class="col-sm-2 col-form-label">Telemóvel:</label>
                             <div>
-                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                <input type="email" class="form-control" id="phone" placeholder="Telemóvel">
                             </div>
                         </div>
-                    </form>
+                        <div class="mb-1 row">
+                          <label for="description" class="col-sm-2 col-form-label">Descrição:</label>
+                          <div>
+                              <input type="email" class="form-control" id="description" placeholder="Descrição">
+                          </div>
+                      </div>
+                      <div class="mb-1 row">
+                        <label for="price" class="col-sm-2 col-form-label">Preço:</label>
+                        <div>
+                            <input type="email" class="form-control" id="price" placeholder="Preço">
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                      <label for="image" class="col-sm-2 col-form-label">Fotografia:</label>
+                      <div>
+                          <input type="file" class="form-control" id="image" placeholder="Fotografia">
+                      </div>
+                  </div>
+                </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary btn-sm" data-bind="click : createParticipant">Create</button>
@@ -173,15 +191,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script>
     $(document).ready(() => {
-        let user = localStorage.getItem('user');
-        console.log(localStorage.getItem('user'));
-        if(localStorage.user){
+        let user = sessionStorage.getItem('user');
+        console.log(sessionStorage.getItem('user'));
+        if(sessionStorage.user){
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
     });
 
     function log_out(){
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         window.location.href = '../login e registo/log_in.html';
       }
     </script>

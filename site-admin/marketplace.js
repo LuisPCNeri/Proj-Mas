@@ -24,11 +24,11 @@ $(document).ready(() => {
                 // Set the image data to participant object
                 participant.image = fr.result;
         
-                // Save the updated participant object to sessionStorage
-                let products = JSON.parse(sessionStorage.getItem('products')) || [];
+                // Save the updated participant object to localStorage
+                let products = JSON.parse(localStorage.getItem('products')) || [];
                 products.push(participant);
-                sessionStorage.setItem('products', JSON.stringify(products));
-                console.log(JSON.parse(sessionStorage.getItem('products')));
+                localStorage.setItem('products', JSON.stringify(products));
+                console.log(JSON.parse(localStorage.getItem('products')));
         
                 // Add the participant to the observable array and sort
                 self.participants.push(participant);
@@ -53,8 +53,8 @@ $(document).ready(() => {
         self.readParticipants = function () {
             console.log('init');
             //--- carrega a lista com um conjunto de participantes
-            for(i=0; i < JSON.parse(sessionStorage.getItem('products')).length; i++){
-                self.participants.push(JSON.parse(sessionStorage.getItem('products'))[i])
+            for(i=0; i < JSON.parse(localStorage.getItem('products')).length; i++){
+                self.participants.push(JSON.parse(localStorage.getItem('products'))[i])
             }
             //--- ordena a lista alfabeticamente pelo nome
             self.participants.sort(
@@ -66,12 +66,12 @@ $(document).ready(() => {
         self.deleteParticipant = function (participant) {
             console.log('deleteParticipant');
             //--- apaga um participante da lista 
-            let products = JSON.parse(sessionStorage.getItem('products'));
+            let products = JSON.parse(localStorage.getItem('products'));
             console.log(participant);
             for(k=0;k < products.length; k++){
                 if(JSON.stringify(participant) === JSON.stringify(products[k])){
                     products.splice(products.indexOf(products[k]), 1);
-                    sessionStorage.setItem('products', JSON.stringify(products)); 
+                    localStorage.setItem('products', JSON.stringify(products)); 
                 }
             }
             self.participants.remove(participant);

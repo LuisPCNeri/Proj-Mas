@@ -144,8 +144,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function (){
-    let user = localStorage.getItem('user');
-    if(localStorage.user){
+    let user = sessionStorage.getItem('user');
+    if(sessionStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
       document.getElementById('navbarDropdown').onclick = () => {};
     }else{
@@ -154,7 +154,7 @@
  });
 
  function log_out(){
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('user');
     window.location.href = '../login e registo/log_in.html';
   }
 </script>
@@ -206,14 +206,14 @@
   }
 
   function get_events(month){
-    const events_ = JSON.parse(sessionStorage.getItem('appointments'));
+    const events_ = JSON.parse(localStorage.getItem('appointments'));
     do_events(events_, month);
   }
 
   function handleDayClick(eventData) {
   return function () {
     document.getElementById('modal-title').innerHTML = 
-      `${eventData.date[0]}/${eventData.date[1]}/${eventData.date[2]}`;
+      `${eventData.date[0]}/${String(parseInt(eventData.date[1]) + 1)}/${eventData.date[2]}`;
     document.getElementById('modal_body').innerHTML = 
       `${eventData.user} tem uma ${eventData.reason} às ${eventData.time}`;
     $('#modal').modal('toggle');
@@ -264,7 +264,7 @@
   }
 
   function desmarcar(){
-    let appointments = JSON.parse(sessionStorage.getItem('appointments'));
+    let appointments = JSON.parse(localStorage.getItem('appointments'));
     console.log(appointments);
     var date = document.getElementById('modal-title').innerHTML;
     date_arr = date.split('/');
@@ -287,11 +287,11 @@
         calendar_days[k].firstChild.classList.add('justify-content-center', 'cell');
 
         for(i=0; i < appointments.length; i++){
-          if(appointments[i].date[0] === date_arr[0] && appointments[i].date[1] === date_arr[1] && appointments[i].date[2] === date_arr[2] && appointments[i].time === time){
+          if(appointments[i].date[0] === date_arr[0] && String(parseInt(appointments[i].date[1]) + 1) === date_arr[1] && appointments[i].date[2] === date_arr[2] && appointments[i].time === time){
             console.log(appointments);
-            appointments.pop(appointments[i]);
+            appointments.splice(appointments.indexOf(appointments[i]), 1);
             console.log(appointments);
-            sessionStorage.setItem('appointments', JSON.stringify(appointments));
+            localStorage.setItem('appointments', JSON.stringify(appointments));
           }
         }
       }

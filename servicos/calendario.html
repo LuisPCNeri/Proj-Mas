@@ -118,14 +118,14 @@
   }
 
   function get_events(month){
-    const events_ = JSON.parse(sessionStorage.getItem('appointments'));
+    const events_ = JSON.parse(localStorage.getItem('appointments'));
     do_events(events_, month);
   }
 
   function handleDayClick(eventData) {
   return function () {
     document.getElementById('modal-title').innerHTML = 
-      `${eventData.date[0]}/${eventData.date[1]}/${eventData.date[2]}`;
+      `${eventData.date[0]}/${String(parseInt(eventData.date[1]) + 1)}/${eventData.date[2]}`;
     document.getElementById('modal_body').innerHTML = 
       `${eventData.dog} Tem uma ${eventData.reason} às ${eventData.time}`;
     $('#modal').modal('toggle');
@@ -141,7 +141,7 @@
     days_arr = document.getElementsByClassName('cell');
     for(k=0; k < days_arr.length; k++){
       for(i=0; i < events.length; i++){
-        if(events[i].date[0] === days_arr[k].firstChild.innerHTML && events[i].date[1] === String(month) && events[i].date[2] === String(year) && events[i].user === localStorage.getItem('user')){
+        if(events[i].date[0] === days_arr[k].firstChild.innerHTML && events[i].date[1] === String(month) && events[i].date[2] === String(year) && events[i].user === sessionStorage.getItem('user')){
           const eventData = events[i];
           console.log(eventData);
           days_arr[k].firstChild.classList.add('cell-text', 'nav-link');
@@ -176,7 +176,7 @@
   }
 
   function desmarcar(){
-    let appointments = JSON.parse(sessionStorage.getItem('appointments'));
+    let appointments = JSON.parse(localStorage.getItem('appointments'));
     console.log(appointments);
     var date = document.getElementById('modal-title').innerHTML;
     date_arr = date.split('/');
@@ -198,12 +198,13 @@
         calendar_days[k].appendChild(cell_);
         calendar_days[k].firstChild.classList.add('justify-content-center', 'cell');
 
+        console.log(appointments);
         for(i=0; i < appointments.length; i++){
-          if(appointments[i].date[0] === date_arr[0] && appointments[i].date[1] === date_arr[1] && appointments[i].date[2] === date_arr[2] && appointments[i].time === time){
+          if(appointments[i].date[0] === date_arr[0] && String(parseInt(appointments[i].date[1]) + 1) === date_arr[1] && appointments[i].date[2] === date_arr[2] && appointments[i].time === time){
             console.log(appointments);
             appointments.pop(appointments[i]);
             console.log(appointments);
-            sessionStorage.setItem('appointments', JSON.stringify(appointments));
+            localStorage.setItem('appointments', JSON.stringify(appointments));
           }
         }
       }

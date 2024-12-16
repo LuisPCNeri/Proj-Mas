@@ -1,7 +1,7 @@
 window.onload = () => {
-    const animal_data = JSON.parse(sessionStorage.getItem('animal_data'));
+    const animal_data = JSON.parse(localStorage.getItem('animal_data'));
     for(k=0; k < animal_data.length ;k++){
-        if(animal_data[k].owner === localStorage.getItem('user')){
+        if(animal_data[k].owner === sessionStorage.getItem('user')){
             create_card(animal_data[k]);
         }
     }
@@ -18,7 +18,7 @@ function send_data(obj){
     const race = card.querySelector('.list-group-item:nth-child(2)').textContent.split(': ')[1].trim();
     const animalData = { name, sex, race };
 
-    localStorage.setItem('animal_data', JSON.stringify(animalData));
+    sessionStorage.setItem('animal_data', JSON.stringify(animalData));
 
     window.location.href = "monitorizacao.html";
 }

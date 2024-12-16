@@ -87,7 +87,7 @@ function create_acc(){
     if(user.email.includes('@vetria')){ user.id = 1;}
     console.log(user);
 
-    new_user = JSON.parse(sessionStorage.getItem('user')) || [];
+    new_user = JSON.parse(localStorage.getItem('user')) || [];
 
     if(new_user.find( u => u.email === user.email)){
         alert('no');
@@ -95,7 +95,7 @@ function create_acc(){
     }
 
     new_user.push(user);
-    sessionStorage.setItem('user', JSON.stringify(new_user));
-    console.log(sessionStorage.getItem('user'));
+    localStorage.setItem('user', JSON.stringify(new_user));
+    console.log(localStorage.getItem('user'));
     window.location.href = 'log_in.html';
 }

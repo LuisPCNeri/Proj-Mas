@@ -4,7 +4,7 @@ let precoTotal = 0;
 let qtdTotal = 0;
 
 $(document).ready( () => {
-    const products = JSON.parse(sessionStorage.getItem('products'));
+    const products = JSON.parse(localStorage.getItem('products'));
     const reader = new FileReader();
     let rows = document.getElementsByClassName('product_row');
 

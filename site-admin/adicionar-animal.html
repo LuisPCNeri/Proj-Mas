@@ -262,15 +262,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script>
     $(document).ready(() => {
-        let user = localStorage.getItem('user');
-        console.log(localStorage.getItem('user'));
-        if(localStorage.user){
+        let user = sessionStorage.getItem('user');
+        console.log(sessionStorage.getItem('user'));
+        if(sessionStorage.user){
           document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
         }
     });
 
     function log_out(){
-        localStorage.removeItem('user');
+        sessionStorage.removeItem('user');
         window.location.href = '../login e registo/log_in.html';
       }
     </script>
