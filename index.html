@@ -220,7 +220,6 @@
 <script src="Scripts/jquery-3.7.1.min.js"></script>
 <script>
   $(document).ready(function (){
-    localStorage.clear();
     let user = sessionStorage.getItem('user');
     if(sessionStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
