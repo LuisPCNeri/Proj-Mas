@@ -252,10 +252,12 @@
   const helder_dog = {
     name: 'bob',
     owner: 'hz@gmail.com',
+    email: 'hz@gmail.com',
     address: 'Rua A',
     birthDate: '10/10/24',
     sex: 'male',
     race: 'Labrador',
+    raca: 'Labrador',
     history: 'Boa Saúde',
     rotine: 'Caminhadas diárias de pelo menos 10 minutos',
     vaccines: 'Todas'
@@ -275,6 +277,7 @@
   let dogs = JSON.parse(localStorage.getItem('animal_data')) || [];
   dogs.push(helder_dog);
   localStorage.setItem('animal_data', JSON.stringify(dogs));
+  localStorage.setItem('animals', JSON.stringify(dogs));
 
   let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
   appointments.push(helder_appointments);
