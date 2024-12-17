@@ -220,6 +220,18 @@
 <script src="Scripts/jquery-3.7.1.min.js"></script>
 <script>
   $(document).ready(function (){
+    const users = JSON.parse(localStorage.getItem('user')) || [];
+    let exists = false;
+    let admin_exists = false;
+    for(k=0;k < users.length ;k++){
+      if(users[k].email === 'hz@gmail.com' || !localStorage.user){
+        exists = true;
+      }else if(users[k].email === 'helderz@vetria.pt' || !localStorage.user){
+        admin_exists = true;
+      }
+    }
+    if(!exists){ set_helder(); }
+    if(!admin_exists){ set_helder_admin() }
     let user = sessionStorage.getItem('user');
     if(sessionStorage.user){
       document.getElementById("nav-login").innerHTML = '<a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDark-User" aria-controls="offcanvasDark">' + user + '</a>';
@@ -229,9 +241,64 @@
     }
  });
 
+ function set_helder(){
+  const helder = {
+    email: 'hz@gmail.com',
+    password: '1234',
+    addr: 'Rua A',
+    name: 'Helder Z',
+    phone: '969696969'
+  };
+  const helder_dog = {
+    name: 'bob',
+    owner: 'hz@gmail.com',
+    address: 'Rua A',
+    birthDate: '10/10/24',
+    sex: 'male',
+    race: 'Labrador',
+    history: 'Boa Saúde',
+    rotine: 'Caminhadas diárias de pelo menos 10 minutos',
+    vaccines: 'Todas'
+  };
+  const helder_appointments = {
+    user: 'hz@gmail.com',
+    time: '16:30',
+    date: ['27', '11', '2024'],
+    dog: 'bob',
+    reason: 'Consulta de Rotina'
+  }
+
+  let users = JSON.parse(localStorage.getItem('user')) || [];
+  users.push(helder);
+  localStorage.setItem('user', JSON.stringify(users));
+
+  let dogs = JSON.parse(localStorage.getItem('animal_data')) || [];
+  dogs.push(helder_dog);
+  localStorage.setItem('animal_data', JSON.stringify(dogs));
+
+  let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+  appointments.push(helder_appointments);
+  localStorage.setItem('appointments', JSON.stringify(appointments));
+ }
+
+ function set_helder_admin(){
+  const helder_admin = {
+    email: 'helderz@vetria.pt',
+    password: '1234',
+    addr: 'Rua A',
+    name: 'Helder Z',
+    phone: '969696969',
+    id: 1
+  };
+
+  let users = JSON.parse(localStorage.getItem('user')) || [];
+  users.push(helder_admin);
+  localStorage.setItem('user', JSON.stringify(users));
+ }
+
  function log_out(){
     sessionStorage.removeItem('user');
-    window.location.href = '/login e registo/log_in.html';
+    window.location.href = 'login e registo/log_in.html';
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

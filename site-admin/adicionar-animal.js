@@ -57,6 +57,8 @@
                     return left.name == right.name ? 0 : (left.name < right.name ? -1 : 1);
                 });
             $("#createParticipantModal").modal('toggle');
+
+            send_data(participant);
         };
         //--- Método de carregamento de dados na Modal EDIT
         self.readParticipant = function (participant) {

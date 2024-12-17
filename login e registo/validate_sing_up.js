@@ -90,7 +90,7 @@ function create_acc(){
     new_user = JSON.parse(localStorage.getItem('user')) || [];
 
     if(new_user.find( u => u.email === user.email)){
-        alert('no');
+        alert('Email já registado');
         return;
     }
 
