@@ -52,18 +52,20 @@ window.onload = () => {
 
         self.read_participants = () => {
             console.log('Inicializing');
-            const walkers = JSON.parse(localStorage.getItem('walkers'));
+            let walkers = JSON.parse(localStorage.getItem('walkers')) || [];
             console.log(walkers);
 
             //Carrega a LISTA com todos os participantes
-            for(i=0; i < JSON.parse(localStorage.getItem('walkers')).length; i++){
-                self.participants.push(JSON.parse(localStorage.getItem('walkers'))[i])
+            for(i=0; i < walkers.length; i++){
+                self.participants.push(walkers[i]);
             }
             //--- ordena a lista alfabeticamente pelo nome
             self.participants.sort(
             function (left, right) {
                 return left.name === right.name ? 0 : (left.name < right.name ? -1 : 1)
             });
+
+            console.log(self.participants);
         };
 
         self.delete_participant = (participant) => {
@@ -71,12 +73,14 @@ window.onload = () => {
             for(i=0;i < walkers.length; i++){
                 if(JSON.stringify(participant) === JSON.stringify(walkers[i])){
                     walkers.splice(walkers.indexOf(walkers[i]), 1);
-                    localStorage.setItem('walkers', walkers);
+                    localStorage.setItem('walkers', JSON.stringify(walkers));
                 }
             }
             self.participants.remove(participant);
             console.log(this);
         };
+
+        this.read_participants();
     }
     ko.applyBindings(new MyViewModel());
 };

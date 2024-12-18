@@ -131,6 +131,8 @@
             self.participants.remove(participant);
             console.log(this);
         };
+
+        this.readParticipants();
     }
 
     //--- Inicialização do ViewModel

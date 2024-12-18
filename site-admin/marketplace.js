@@ -53,8 +53,9 @@ $(document).ready(() => {
         self.readParticipants = function () {
             console.log('init');
             //--- carrega a lista com um conjunto de participantes
-            for(i=0; i < JSON.parse(localStorage.getItem('products')).length; i++){
-                self.participants.push(JSON.parse(localStorage.getItem('products'))[i])
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+            for(i=0; i < products.length; i++){
+                self.participants.push(products[i]);
             }
             //--- ordena a lista alfabeticamente pelo nome
             self.participants.sort(
@@ -77,6 +78,8 @@ $(document).ready(() => {
             self.participants.remove(participant);
             console.log(this);
         };
+
+        this.readParticipants();
     }
 
         ko.applyBindings(new MyViewModel());
