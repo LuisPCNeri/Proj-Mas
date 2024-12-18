@@ -82,7 +82,7 @@
             //--- carrega a lista com um conjunto de participantes
             let animals = JSON.parse(localStorage.getItem('animals')) || [];
             for(i=0; i < animals.length; i++){
-                self.participants.push(JSON.parse(localStorage.getItem('animals'))[i])
+                self.participants.push(animals[i]);
             }
             //--- ordena a lista alfabeticamente pelo nome
             self.participants.sort(
