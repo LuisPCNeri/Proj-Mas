@@ -26,7 +26,7 @@
         self.participants = ko.observableArray();
         //--- Variável computada que nos indica se a LISTA possui/não possui elementos
         self.hasParticipants = ko.computed(function () {
-            var retVal = (self.participants.length > 0);
+            var retVal = (self.participants().length > 0);
             console.log('hasParticipants: ' + retVal);
             return retVal;
         }, self);
