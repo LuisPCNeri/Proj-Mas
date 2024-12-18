@@ -220,6 +220,7 @@
 <script src="Scripts/jquery-3.7.1.min.js"></script>
 <script>
   $(document).ready(function (){
+    localStorage.clear();
     const users = JSON.parse(localStorage.getItem('user')) || [];
     let exists = false;
     let admin_exists = false;
