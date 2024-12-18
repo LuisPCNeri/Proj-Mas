@@ -80,7 +80,8 @@
         self.readParticipants = function () {
             console.log('init');
             //--- carrega a lista com um conjunto de participantes
-            for(i=0; i < JSON.parse(localStorage.getItem('animals')).length; i++){
+            let animals = JSON.parse(localStorage.getItem('animals')) || [];
+            for(i=0; i < animals.length; i++){
                 self.participants.push(JSON.parse(localStorage.getItem('animals'))[i])
             }
             //--- ordena a lista alfabeticamente pelo nome
